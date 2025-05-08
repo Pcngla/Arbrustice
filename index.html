@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Arbrustice</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: #000;
+      font-family: 'Georgia', serif;
+      color: gold;
+      overflow: hidden;
+    }
+    body::before {
+      content: "";
+      background: url('background.jpg') center center / cover no-repeat;
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: -1;
+      opacity: 0;
+      animation: fadeIn 4s ease-out forwards;
+    }
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+    .centered {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      animation: enter 2s ease-out forwards;
+    }
+    @keyframes enter {
+      from { transform: translate(-50%, -60%) scale(0.8); opacity: 0; }
+      to { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+    }
+    h1 {
+      font-size: 3em;
+      text-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
+      animation: glow 3s ease-in-out infinite alternate;
+    }
+    @keyframes glow {
+      from { text-shadow: 0 0 5px gold; }
+      to { text-shadow: 0 0 25px gold; }
+    }
+  </style>
+</head>
+<body>
+  <div class="centered">
+    <h1>Arbrustice.org</h1>
+    <p>The Midnight Garden Awakens</p>
+  </div>
+</body>
+</html>
