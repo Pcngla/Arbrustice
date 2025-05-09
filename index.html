@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Arbrustice</title>
   <style>
     body {
@@ -15,81 +15,57 @@
 
     .portal {
       position: absolute;
+      width: 100px;
+      height: 100px;
       cursor: pointer;
-      animation: float 4s ease-in-out infinite;
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      overflow: hidden;
     }
 
-    .portal:hover {
-      transform: scale(1.07);
-      box-shadow: 0 0 30px gold;
+    .symbol {
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      background-size: cover;
+      background-position: center;
+      transition: opacity 0.3s ease, transform 0.4s ease;
     }
 
-    /* Unique shape styles */
-    .rectangle {
-      width: 120px;
-      height: 60px;
-      border-radius: 12px;
-      background-color: rgba(0, 0, 0, 0.15);
-      border: 2px solid gold;
-      box-shadow: inset 0 0 5px gold, 0 0 12px rgba(255, 215, 0, 0.3);
+    /* Glow on PC hover */
+    .portal:hover .symbol {
+      opacity: 1;
+      transform: scale(1.1);
+      box-shadow: 0 0 20px gold;
     }
 
-    .bonsai-heart {
-      width: 80px;
-      height: 80px;
-      position: relative;
+    /* Animation on tap for mobile */
+    .active .symbol {
+      opacity: 1 !important;
+      transform: scale(1.2);
+      box-shadow: 0 0 25px gold;
     }
 
-    .bonsai-heart::before,
-    .bonsai-heart::after {
-      content: "";
-      position: absolute;
-      width: 80px;
-      height: 80px;
-      background: rgba(255, 0, 0, 0.25);
-      border-radius: 50%;
-      box-shadow: 0 0 15px crimson;
+    /* Each shape gets its own symbol */
+    #p1 .symbol {
+      background-image: url('leaf.png'); /* placeholder */
     }
 
-    .bonsai-heart::before {
-      top: 0;
-      left: 0;
+    #p2 .symbol {
+      background-image: url('heart.png'); /* placeholder */
     }
 
-    .bonsai-heart::after {
-      top: 0;
-      left: 40px;
+    #p3 .symbol {
+      background-image: url('triangle.png'); /* placeholder */
     }
 
-    .losange {
-      width: 80px;
-      height: 80px;
-      background-color: rgba(0, 0, 0, 0.15);
-      border: 2px solid gold;
-      transform: rotate(45deg);
-      box-shadow: 0 0 12px rgba(255, 215, 0, 0.3);
+    #p4 .symbol {
+      background-image: url('spiral.png'); /* placeholder */
     }
 
-    .circle {
-      width: 80px;
-      height: 80px;
-      background-color: rgba(0, 0, 0, 0.15);
-      border: 2px solid gold;
-      border-radius: 50%;
-      box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
-    }
-
-    /* Position each portal cleanly */
-    #p1 { top: 22%; left: 15%; }     /* orchard rectangle */
-    #p2 { top: 22%; right: 15%; }    /* bonsaï heart */
-    #p3 { bottom: 22%; left: 15%; }  /* designs losange */
-    #p4 { bottom: 22%; right: 15%; } /* other circle */
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
-    }
+    /* Positioning */
+    #p1 { top: 22%; left: 15%; }
+    #p2 { top: 22%; right: 15%; }
+    #p3 { bottom: 22%; left: 15%; }
+    #p4 { bottom: 22%; right: 15%; }
 
     .fade-out {
       opacity: 0;
@@ -104,18 +80,32 @@
       window.location.href = "help.html";
     }
 
-    function goTo(url) {
-      document.body.classList.add("fade-out");
+    function goTo(id, url) {
+      const el = document.getElementById(id);
+      el.classList.add("active");
+
+      setTimeout(() => {
+        document.body.classList.add("fade-out");
+      }, 400);
+
       setTimeout(() => {
         window.location.href = url;
-      }, 500);
+      }, 900);
     }
   </script>
 </head>
 <body>
-  <div id="p1" class="portal rectangle" onclick="goTo('orchard/')"></div>
-  <div id="p2" class="portal bonsai-heart" onclick="goTo('bonsai/')"></div>
-  <div id="p3" class="portal losange" onclick="goTo('designs/')"></div>
-  <div id="p4" class="portal circle" onclick="goTo('other/')"></div>
+  <div id="p1" class="portal" onclick="goTo('p1', 'orchard/')">
+    <div class="symbol"></div>
+  </div>
+  <div id="p2" class="portal" onclick="goTo('p2', 'bonsai/')">
+    <div class="symbol"></div>
+  </div>
+  <div id="p3" class="portal" onclick="goTo('p3', 'designs/')">
+    <div class="symbol"></div>
+  </div>
+  <div id="p4" class="portal" onclick="goTo('p4', 'other/')">
+    <div class="symbol"></div>
+  </div>
 </body>
 </html>
