@@ -9,44 +9,119 @@
       margin: 0;
       padding: 0;
       height: 100%;
-      background-color: #000;
-      background-image: url('background.jpg');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
+      background: #000 url('background.jpg') center center / cover no-repeat fixed;
       overflow: hidden;
     }
 
-    .help-leaf {
+    .overlay {
       position: absolute;
-      top: 20px;
-      right: 30px;
-      font-size: 1.2em;
-      color: gold;
-      background: rgba(0, 0, 0, 0.5);
-      border-radius: 50% 50% 45% 55%;
-      padding: 12px 18px;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.3);
+      z-index: 0;
+    }
+
+    .portal {
+      position: absolute;
+      z-index: 2;
       cursor: pointer;
-      font-family: 'Georgia', serif;
-      box-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
-      transition: transform 0.3s ease;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
     }
 
-    .help-leaf:hover {
-      animation: dingle 0.8s ease-in-out;
+    /* Heart-shaped apple portal */
+    .heart {
+      top: 50%;
+      left: 20%;
+      width: 60px;
+      height: 54px;
+      background: rgba(0,0,0,0.7);
+      transform: translate(-50%, -50%) rotate(-45deg);
+      border-radius: 50% 50% 0 0;
+      box-shadow: 0 0 15px rgba(255, 0, 0, 0.1);
+    }
+    .heart::after,
+    .heart::before {
+      content: "";
+      position: absolute;
+      width: 60px;
+      height: 54px;
+      background: rgba(0,0,0,0.7);
+      border-radius: 50%;
+    }
+    .heart::before {
+      top: -30px;
+      left: 0;
+    }
+    .heart::after {
+      left: 30px;
+      top: 0;
+    }
+    .heart:hover {
+      box-shadow: 0 0 30px red;
+      transform: translate(-50%, -50%) rotate(-45deg) scale(1.1);
     }
 
-    @keyframes dingle {
-      0%   { transform: rotate(0deg); }
-      25%  { transform: rotate(4deg); }
-      50%  { transform: rotate(-4deg); }
-      75%  { transform: rotate(2deg); }
-      100% { transform: rotate(0deg); }
+    /* Rectangle with bonsai animation */
+    .bonsai {
+      top: 30%;
+      left: 60%;
+      width: 120px;
+      height: 70px;
+      background: rgba(0,0,0,0.7);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .bonsai:hover::before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Bonsai_IMG_6390.jpg/320px-Bonsai_IMG_6390.jpg') center center / cover no-repeat;
+      animation: wind 4s infinite alternate ease-in-out;
+    }
+
+    @keyframes wind {
+      0% { transform: scale(1); filter: brightness(1); }
+      100% { transform: scale(1.05) translateX(-2px); filter: brightness(1.1); }
+    }
+
+    /* Losange over a leaf */
+    .losange {
+      top: 70%;
+      left: 30%;
+      width: 80px;
+      height: 80px;
+      background: rgba(0, 0, 0, 0.7);
+      transform: rotate(45deg);
+      box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
+    }
+    .losange:hover {
+      box-shadow: 0 0 20px gold;
+      transform: rotate(45deg) scale(1.1);
+    }
+
+    /* Mystery smile portal */
+    .smile {
+      bottom: 10%;
+      right: 10%;
+      width: 60px;
+      height: 60px;
+      background: rgba(0, 0, 0, 0.7);
+      border-radius: 50%;
+      box-shadow: 0 0 10px rgba(255, 105, 180, 0.1);
+    }
+    .smile:hover {
+      box-shadow: 0 0 25px rgba(255, 105, 180, 0.6);
+      transform: scale(1.15) rotate(5deg);
     }
   </style>
 </head>
 <body>
-  <div class="help-leaf">Help</div>
+  <div class="overlay"></div>
+
+  <a href="orchard.html"><div class="portal heart"></div></a>
+  <a href="gate.html"><div class="portal bonsai"></div></a>
+  <a href="archive.html"><div class="portal losange"></div></a>
+  <a href="root.html"><div class="portal smile"></div></a>
 </body>
 </html>
