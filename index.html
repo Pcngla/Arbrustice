@@ -16,25 +16,25 @@
     .portal {
       position: absolute;
       cursor: pointer;
-      transition: transform 0.5s ease, box-shadow 0.5s ease;
       animation: float 4s ease-in-out infinite;
     }
 
     .portal:hover {
       transform: scale(1.07);
       box-shadow: 0 0 30px gold;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .rectangle, .square, .losange {
-      background-color: rgba(0, 0, 0, 0.15);
+      background-color: rgba(0, 0, 0, 0.2);
       border: 2px solid gold;
-      box-shadow: 0 0 12px rgba(255, 215, 0, 0.3);
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
     }
 
     .rectangle {
       width: 120px;
       height: 60px;
-      border-radius: 10px;
+      border-radius: 12px;
     }
 
     .square {
@@ -51,6 +51,7 @@
     .bonsai-heart {
       width: 80px;
       height: 80px;
+      position: relative;
     }
 
     .bonsai-heart::before,
@@ -81,7 +82,7 @@
 
     @keyframes float {
       0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
+      50% { transform: translateY(-8px); }
     }
 
     .fade-out {
