@@ -1,61 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bonsai Room - Arbrustice</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background: url('background.jpg') no-repeat center center fixed;
-      background-size: cover;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      color: gold;
-      text-align: center;
-    }
-
-    .content {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background-color: rgba(0, 0, 0, 0.7);
-      padding: 40px;
-      border-radius: 20px;
-      box-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
-    }
-
-    button {
-      background: gold;
-      color: black;
-      border: none;
-      padding: 15px 30px;
-      font-size: 18px;
-      border-radius: 12px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-      margin-top: 30px;
-    }
-
-    button:hover {
-      background: darkorange;
-    }
-  </style>
-</head>
 <body>
   <div class="content">
     <h1>Welcome to the Bonsai Room</h1>
     <p>Nature speaks in silence. You have entered the sacred garden.</p>
+    
+    <!-- Fullscreen activation button -->
+    <button onclick="openFullscreen()">Enter Immersive Mode</button>
+    
+    <!-- Return to main portal -->
     <button onclick="window.location.href='index.html'">Return to Portal</button>
   </div>
 
   <script>
-    // Prevent Android back navigation
+    // Prevent Android back button
     history.pushState(null, null, location.href);
-    window.onpopstate = function () {
-      history.go(1);
-    };
+    window.addEventListener('popstate', function () {
+      location.href = "bonsai.html";
+    });
+
+    // Fullscreen function
+    function openFullscreen() {
+      const el = document.documentElement;
+      if (el.requestFullscreen) {
+        el.requestFullscreen();
+      } else if (el.webkitRequestFullscreen) { /* Safari */
+        el.webkitRequestFullscreen();
+      } else if (el.msRequestFullscreen) { /* IE11 */
+        el.msRequestFullscreen();
+      }
+    }
   </script>
 </body>
-</html>
