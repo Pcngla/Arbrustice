@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Arbrustice</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
@@ -12,46 +11,39 @@
       background: url('background.jpg') no-repeat center center fixed;
       background-size: cover;
       overflow: hidden;
-      font-family: 'Cinzel Decorative', cursive;
     }
 
-    .bonsai-label {
+    .apple-zone {
       position: absolute;
-      top: 35%;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(0, 0, 0, 0.2);
-      color: gold;
-      padding: 4px 12px;
-      font-size: 16px;
-      border-radius: 20px;
-      font-style: italic;
-      text-shadow: 0 0 8px rgba(255, 0, 0, 0.5);
-      pointer-events: none;
-      animation: fadePulse 3s ease-in-out infinite;
-    }
-
-    @keyframes fadePulse {
-      0% { opacity: 0.3; }
-      50% { opacity: 1; }
-      100% { opacity: 0.3; }
-    }
-
-    .heart-btn {
-      position: absolute;
-      top: 40%;
-      left: 50%;
+      top: 65%;
+      left: 75%;
+      width: 8%;
+      aspect-ratio: 1/1;
       transform: translate(-50%, -50%);
       cursor: pointer;
-      width: 100px;
-      height: auto;
+      z-index: 2;
+    }
+
+    .apple-zone::before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      box-shadow: 0 0 25px 10px rgba(255, 0, 0, 0.3);
+      opacity: 0;
+      transition: opacity 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .apple-zone:hover::before {
+      opacity: 1;
+      box-shadow: 0 0 40px 20px rgba(255, 0, 0, 0.6);
     }
   </style>
 </head>
 <body>
 
-  <div class="bonsai-label">Immersive Room</div>
-  <img src="bonsai/heart.png" class="heart-btn" onclick="window.location.replace('bonsai/index.html')" />
+  <div class="apple-zone" onclick="window.location.href='bonsai/'"></div>
 
 </body>
 </html>
