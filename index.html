@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Arbrustice</title>
   <style>
     body {
@@ -19,49 +19,36 @@
       height: 100px;
       cursor: pointer;
       overflow: hidden;
+      transition: transform 0.3s ease;
     }
 
     .symbol {
       width: 100%;
       height: 100%;
       opacity: 0;
-      background-size: cover;
+      background-size: contain;
+      background-repeat: no-repeat;
       background-position: center;
       transition: opacity 0.3s ease, transform 0.4s ease;
     }
 
-    /* Glow on PC hover */
     .portal:hover .symbol {
       opacity: 1;
       transform: scale(1.1);
       box-shadow: 0 0 20px gold;
     }
 
-    /* Animation on tap for mobile */
     .active .symbol {
       opacity: 1 !important;
       transform: scale(1.2);
       box-shadow: 0 0 25px gold;
     }
 
-    /* Each shape gets its own symbol */
-    #p1 .symbol {
-      background-image: url('leaf.png'); /* placeholder */
-    }
+    #p1 .symbol { background-image: url('orchard/leaf.png'); }
+    #p2 .symbol { background-image: url('bonsai/heart.png'); }
+    #p3 .symbol { background-image: url('designs/triangle.png'); }
+    #p4 .symbol { background-image: url('other/spiral.png'); }
 
-    #p2 .symbol {
-      background-image: url('heart.png'); /* placeholder */
-    }
-
-    #p3 .symbol {
-      background-image: url('triangle.png'); /* placeholder */
-    }
-
-    #p4 .symbol {
-      background-image: url('spiral.png'); /* placeholder */
-    }
-
-    /* Positioning */
     #p1 { top: 22%; left: 15%; }
     #p2 { top: 22%; right: 15%; }
     #p3 { bottom: 22%; left: 15%; }
