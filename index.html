@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Arbrustice</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
@@ -11,7 +12,7 @@
       background: url('background.jpg') no-repeat center center fixed;
       background-size: cover;
       overflow: hidden;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Cinzel Decorative', cursive;
     }
 
     .bonsai-label {
@@ -19,15 +20,15 @@
       top: 35%;
       left: 50%;
       transform: translateX(-50%);
-      background: rgba(0, 0, 0, 0.3);
-      color: rgba(255, 215, 0, 0.7);
+      background: rgba(0, 0, 0, 0.2);
+      color: gold;
       padding: 4px 12px;
-      font-size: 13px;
+      font-size: 16px;
       border-radius: 20px;
       font-style: italic;
-      text-shadow: 0 0 6px rgba(255, 215, 0, 0.3);
+      text-shadow: 0 0 8px rgba(255, 0, 0, 0.5);
       pointer-events: none;
-      animation: fadePulse 2.8s ease-in-out infinite;
+      animation: fadePulse 3s ease-in-out infinite;
     }
 
     @keyframes fadePulse {
@@ -50,8 +51,7 @@
 <body>
 
   <div class="bonsai-label">Immersive Room</div>
-
-  <img src="heart.png" class="heart-btn" onclick="window.location.replace('bonsai.html')" />
+  <img src="bonsai/heart.png" class="heart-btn" onclick="window.location.replace('bonsai/index.html')" />
 
 </body>
 </html>
