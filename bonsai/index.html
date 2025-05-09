@@ -3,70 +3,67 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bonsai Room - Arbrustice</title>
+  <title>Bonsai Room</title>
   <style>
     body {
       margin: 0;
       padding: 0;
       background: url('../background.jpg') no-repeat center center fixed;
       background-size: cover;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      color: gold;
-      text-align: center;
       overflow: hidden;
-    }
-
-    .content {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background-color: rgba(0, 0, 0, 0.75);
-      padding: 40px;
-      border-radius: 20px;
-      box-shadow: 0 0 30px rgba(255, 215, 0, 0.4);
+      font-family: 'Segoe UI', sans-serif;
       animation: fadeIn 2s ease;
     }
 
-    button {
-      background: gold;
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .floating-buttons {
+      position: absolute;
+      bottom: 5%;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      z-index: 2;
+    }
+
+    .floating-buttons button {
+      background: rgba(255, 215, 0, 0.9);
       color: black;
       border: none;
-      padding: 15px 30px;
-      font-size: 18px;
+      padding: 14px 28px;
+      font-size: 16px;
       border-radius: 12px;
       cursor: pointer;
       transition: background 0.3s ease;
-      margin: 15px;
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
     }
 
-    button:hover {
-      background: darkorange;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translate(-50%, -40%); }
-      to { opacity: 1; transform: translate(-50%, -50%); }
+    .floating-buttons button:hover {
+      background: crimson;
+      color: gold;
     }
   </style>
 </head>
-<body onclick="enterImmersiveOnce()" style="cursor: pointer;">
+<body onclick="enterImmersiveOnce()">
 
-  <div class="content">
-    <h1>Welcome to the Bonsai Room</h1>
-    <p>You’ve entered the sanctuary behind the apple. Breathe deeply.</p>
-
-    <button onclick="window.location.href='bonsai2.html'">Explore Deeper</button>
+  <div class="floating-buttons">
+    <button onclick="window.location.href='bonsai2.html'">Enter Deeper Sanctuary</button>
+    <button onclick="window.location.href='../index.html'">Return to Portal</button>
   </div>
 
   <script>
-    // Block Android back button
+    // Prevent Android back button from exiting
     history.pushState(null, null, location.href);
     window.addEventListener('popstate', function () {
       location.href = "index.html";
     });
 
-    // Fullscreen on mobile
+    // Fullscreen once
     let alreadyEntered = false;
     function enterImmersiveOnce() {
       if (alreadyEntered) return;
