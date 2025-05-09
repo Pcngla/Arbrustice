@@ -2,38 +2,60 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Bonsaï Room</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bonsai Room - Arbrustice</title>
   <style>
     body {
       margin: 0;
       padding: 0;
-      background: black;
-      color: crimson;
-      font-family: 'Segoe UI', sans-serif;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      text-align: center;
-      animation: fadeIn 1s ease;
-    }
-    a {
-      margin-top: 20px;
+      background: url('background.jpg') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       color: gold;
-      font-size: 1.2rem;
-      text-decoration: none;
+      text-align: center;
     }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+
+    .content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+    }
+
+    button {
+      background: gold;
+      color: black;
+      border: none;
+      padding: 15px 30px;
+      font-size: 18px;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      margin-top: 30px;
+    }
+
+    button:hover {
+      background: darkorange;
     }
   </style>
 </head>
 <body>
-  <h1>Welcome to the Bonsaï Room</h1>
-  <p>This place will grow gracefully.</p>
-  <a href="../index.html">Return to Arbrustice</a>
+  <div class="content">
+    <h1>Welcome to the Bonsai Room</h1>
+    <p>Nature speaks in silence. You have entered the sacred garden.</p>
+    <button onclick="window.location.href='index.html'">Return to Portal</button>
+  </div>
+
+  <script>
+    // Prevent Android back navigation
+    history.pushState(null, null, location.href);
+    window.onpopstate = function () {
+      history.go(1);
+    };
+  </script>
 </body>
 </html>
