@@ -91,9 +91,9 @@
   </style>
   <script>
     const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+    const isAppleMobile = /iPhone|iPad|iPod/.test(userAgent) && /AppleWebKit/.test(userAgent) && !/Android/.test(userAgent);
 
-    // Only redirect Apple mobile users to help
-    if (/iPhone|iPad|iPod/i.test(userAgent)) {
+    if (isAppleMobile) {
       window.location.href = "help.html";
     }
 
