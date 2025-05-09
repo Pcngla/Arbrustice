@@ -8,7 +8,7 @@
     body {
       margin: 0;
       padding: 0;
-      background: url('background.jpg') no-repeat center center fixed;
+      background: url('../background.jpg') no-repeat center center fixed;
       background-size: cover;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       color: gold;
@@ -48,16 +48,16 @@
   <div class="content">
     <h1>Welcome to the Bonsai Room</h1>
     <p>Nature speaks in silence. You have entered the sacred garden.</p>
-    <p>(Touch anywhere once to enter immersive mode)</p>
 
-    <button onclick="window.location.href='index.html'">Return to Portal</button>
+    <button onclick="window.location.href='../index.html'">Return to Portal</button>
+    <button onclick="window.location.href='bonsai2.html'">Enter Deeper Sanctuary</button>
   </div>
 
   <script>
     // Prevent Android back button
     history.pushState(null, null, location.href);
     window.addEventListener('popstate', function () {
-      location.href = "bonsai.html";
+      location.href = "index.html";
     });
 
     // Fullscreen activation
