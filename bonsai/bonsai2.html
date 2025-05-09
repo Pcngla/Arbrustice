@@ -3,39 +3,49 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bonsai Chamber II</title>
+  <title>Bonsai Room II</title>
   <style>
     body {
       margin: 0;
       padding: 0;
       background: url('../background.jpg') no-repeat center center fixed;
       background-size: cover;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      color: gold;
-      text-align: center;
+      overflow: hidden;
     }
 
-    .content {
+    .rotating {
       position: absolute;
       top: 50%;
       left: 50%;
+      width: 80px;
+      height: 80px;
       transform: translate(-50%, -50%);
-      background-color: rgba(0, 0, 0, 0.8);
-      padding: 40px;
-      border-radius: 20px;
-      box-shadow: 0 0 40px rgba(255, 215, 0, 0.4);
+      animation: spin 6s linear infinite;
+      pointer-events: none;
+      opacity: 0.9;
+    }
+
+    @keyframes spin {
+      from { transform: translate(-50%, -50%) rotate(0deg); }
+      to { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
+    .button-zone {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
     }
 
     button {
       background: gold;
       color: black;
       border: none;
-      padding: 15px 30px;
-      font-size: 18px;
-      border-radius: 12px;
+      padding: 12px 25px;
+      font-size: 16px;
+      border-radius: 10px;
       cursor: pointer;
-      transition: background 0.3s ease;
-      margin: 15px;
     }
 
     button:hover {
@@ -43,36 +53,31 @@
     }
   </style>
 </head>
-<body onclick="enterImmersiveOnce()" style="cursor: pointer;">
+<body onclick="enterImmersiveOnce()">
 
-  <div class="content">
-    <h1>The Deeper Chamber</h1>
-    <p>You found the second Bonsai sanctuary. Peace flows deeper here.</p>
+  <img src="../triangle.png" alt="rotating symbol" class="rotating" />
 
+  <div class="button-zone">
     <button onclick="window.location.href='index.html'">Back to Bonsai I</button>
     <button onclick="window.location.href='../index.html'">Return to Portal</button>
   </div>
 
   <script>
-    // Prevent Android back button
+    // Block Android back button
     history.pushState(null, null, location.href);
     window.addEventListener('popstate', function () {
       location.href = "bonsai2.html";
     });
 
-    // Fullscreen activation
+    // Fullscreen
     let alreadyEntered = false;
     function enterImmersiveOnce() {
       if (alreadyEntered) return;
       alreadyEntered = true;
       const el = document.documentElement;
-      if (el.requestFullscreen) {
-        el.requestFullscreen();
-      } else if (el.webkitRequestFullscreen) {
-        el.webkitRequestFullscreen();
-      } else if (el.msRequestFullscreen) {
-        el.msRequestFullscreen();
-      }
+      if (el.requestFullscreen) el.requestFullscreen();
+      else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
+      else if (el.msRequestFullscreen) el.msRequestFullscreen();
     }
   </script>
 </body>
