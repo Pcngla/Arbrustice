@@ -11,65 +11,94 @@
       background: url('../background.jpg') no-repeat center center fixed;
       background-size: cover;
       overflow: hidden;
+      animation: fadeIn 2s ease;
     }
 
-    .rotating {
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .orbital-container {
       position: absolute;
       top: 50%;
       left: 50%;
-      width: 80px;
-      height: 80px;
-      transform: translate(-50%, -50%);
-      animation: spin 6s linear infinite;
-      pointer-events: none;
-      opacity: 0.9;
+      width: 240px;
+      height: 240px;
+      margin: -120px 0 0 -120px;
+      animation: spin 20s linear infinite;
+      z-index: 1;
     }
+
+    .orbital-container img {
+      position: absolute;
+      width: 48px;
+      height: 48px;
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    .rune1 { top: 0; left: 50%; transform: translateX(-50%); }
+    .rune2 { top: 50%; left: 0; transform: translateY(-50%); }
+    .rune3 { bottom: 0; left: 50%; transform: translateX(-50%); }
+    .rune4 { top: 50%; right: 0; transform: translateY(-50%); }
 
     @keyframes spin {
-      from { transform: translate(-50%, -50%) rotate(0deg); }
-      to { transform: translate(-50%, -50%) rotate(360deg); }
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
     }
 
-    .button-zone {
+    .floating-buttons {
       position: absolute;
-      bottom: 40px;
+      bottom: 5%;
       left: 50%;
       transform: translateX(-50%);
-      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      z-index: 2;
     }
 
-    button {
-      background: gold;
+    .floating-buttons button {
+      background: rgba(255, 215, 0, 0.9);
       color: black;
       border: none;
-      padding: 12px 25px;
+      padding: 14px 28px;
       font-size: 16px;
-      border-radius: 10px;
+      border-radius: 12px;
       cursor: pointer;
+      transition: background 0.3s ease;
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
     }
 
-    button:hover {
+    .floating-buttons button:hover {
       background: crimson;
+      color: gold;
     }
   </style>
 </head>
 <body onclick="enterImmersiveOnce()">
 
-  <img src="../triangle.png" alt="rotating symbol" class="rotating" />
+  <div class="orbital-container">
+    <img src="../heart.png" class="rune1" />
+    <img src="../leaf.png" class="rune2" />
+    <img src="../spiral.png" class="rune3" />
+    <img src="../triangle.png" class="rune4" />
+  </div>
 
-  <div class="button-zone">
+  <div class="floating-buttons">
     <button onclick="window.location.href='index.html'">Back to Bonsai I</button>
     <button onclick="window.location.href='../index.html'">Return to Portal</button>
   </div>
 
   <script>
-    // Block Android back button
+    // Prevent Android back button from exiting
     history.pushState(null, null, location.href);
     window.addEventListener('popstate', function () {
       location.href = "bonsai2.html";
     });
 
-    // Fullscreen
+    // Fullscreen once
     let alreadyEntered = false;
     function enterImmersiveOnce() {
       if (alreadyEntered) return;
