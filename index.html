@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Arbrustice</title>
   <style>
     body {
@@ -11,74 +11,93 @@
       background: url('background.jpg') no-repeat center center fixed;
       background-size: cover;
       overflow: hidden;
-      font-family: 'Segoe UI', sans-serif;
     }
 
     .portal {
       position: absolute;
-      border-radius: 20px;
-      border: 2px solid gold;
-      background-color: rgba(0, 0, 0, 0.5);
-      color: gold;
-      text-align: center;
-      line-height: 100px;
-      font-size: 1.2rem;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      cursor: pointer;
+      box-shadow: 0 0 12px rgba(255, 215, 0, 0.4);
+      background-color: rgba(0, 0, 0, 0.3);
     }
 
     .portal:hover {
       transform: scale(1.05);
-      box-shadow: 0 0 20px gold;
+      box-shadow: 0 0 25px gold;
     }
 
-    /* 4 portals layout */
-    #portal1 { top: 20%; left: 10%; width: 120px; height: 100px; }
-    #portal2 { top: 20%; right: 10%; width: 120px; height: 100px; }
-    #portal3 { bottom: 20%; left: 10%; width: 120px; height: 100px; }
-    #portal4 { bottom: 20%; right: 10%; width: 120px; height: 100px; }
+    .rectangle {
+      width: 120px;
+      height: 60px;
+      border-radius: 12px;
+      border: 2px solid gold;
+    }
 
-    /* Help leaf */
-    #help {
+    .square {
+      width: 80px;
+      height: 80px;
+      border: 2px solid gold;
+    }
+
+    .losange {
+      width: 80px;
+      height: 80px;
+      transform: rotate(45deg);
+      border: 2px solid gold;
+    }
+
+    .heart {
+      width: 80px;
+      height: 80px;
+      background-color: transparent;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: "";
       position: absolute;
-      bottom: 10px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 1rem;
-      color: crimson;
-      background-color: rgba(0, 0, 0, 0.4);
-      padding: 8px 16px;
-      border: 1px solid crimson;
-      border-radius: 10px;
-      text-decoration: none;
-      transition: 0.3s;
+      width: 80px;
+      height: 80px;
+      background: rgba(255, 0, 0, 0.3);
+      border-radius: 50%;
+      box-shadow: 0 0 15px red;
     }
 
-    #help:hover {
-      box-shadow: 0 0 10px crimson;
-      transform: translateX(-50%) scale(1.05);
+    .heart::before {
+      top: 0;
+      left: 0;
     }
 
-    /* Mobile adjustments */
-    @media (max-width: 768px) {
-      .portal {
-        width: 100px;
-        height: 80px;
-        font-size: 1rem;
-        line-height: 80px;
-      }
+    .heart::after {
+      top: 0;
+      left: 40px;
+    }
 
-      #portal1, #portal2 { top: 15%; }
-      #portal3, #portal4 { bottom: 15%; }
+    /* Positions */
+    #p1 { top: 20%; left: 10%; }
+    #p2 { top: 20%; right: 10%; }
+    #p3 { bottom: 20%; left: 10%; }
+    #p4 { bottom: 20%; right: 10%; }
+
+    /* Fade transition */
+    .fade-out {
+      opacity: 0;
+      transition: opacity 0.5s ease;
     }
   </style>
+  <script>
+    function goTo(url) {
+      document.body.classList.add("fade-out");
+      setTimeout(() => {
+        window.location.href = url;
+      }, 500);
+    }
+  </script>
 </head>
 <body>
-  <a id="portal1" class="portal" href="orchard.html">Orchard</a>
-  <a id="portal2" class="portal" href="bonsai.html">Bonsaïs</a>
-  <a id="portal3" class="portal" href="designs.html">Designs</a>
-  <a id="portal4" class="portal" href="other.html">Other</a>
-  <a id="help" href="help.html">Help Leaf</a>
+  <div id="p1" class="portal heart" onclick="goTo('orchard.html')"></div>
+  <div id="p2" class="portal rectangle" onclick="goTo('bonsai.html')"></div>
+  <div id="p3" class="portal losange" onclick="goTo('designs.html')"></div>
+  <div id="p4" class="portal square" onclick="goTo('other.html')"></div>
 </body>
 </html>
