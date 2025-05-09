@@ -74,27 +74,26 @@
       left: 40px;
     }
 
-    /* Portal Positions - clean and centered layout */
     #p1 { top: 25%; left: 15%; }
     #p2 { top: 25%; right: 15%; }
     #p3 { bottom: 25%; left: 15%; }
     #p4 { bottom: 25%; right: 15%; }
 
-    /* Floating animation */
     @keyframes float {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-10px); }
     }
 
-    /* Fade transition on click */
     .fade-out {
       opacity: 0;
       transition: opacity 0.5s ease;
     }
   </style>
   <script>
-    // Mobile redirect
-    if (window.innerWidth <= 768) {
+    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+    // Only redirect Apple mobile users to help
+    if (/iPhone|iPad|iPod/i.test(userAgent)) {
       window.location.href = "help.html";
     }
 
