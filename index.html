@@ -10,6 +10,7 @@
       height: 100%;
       background: #000 url('background.jpg') center center / cover no-repeat fixed;
       overflow: hidden;
+      font-family: 'Georgia', serif;
     }.glow-circle {
   position: absolute;
   top: 10%;
@@ -23,17 +24,15 @@
   z-index: 1;
 }
 @keyframes pulseGlow {
-  0% { transform: scale(0.95); opacity: 0.4; }
+  0%, 100% { transform: scale(0.95); opacity: 0.4; }
   50% { transform: scale(1.05); opacity: 0.7; }
-  100% { transform: scale(0.95); opacity: 0.4; }
 }
 
 .portal {
   position: absolute;
   z-index: 2;
-  cursor: pointer;
-  background: rgba(0, 0, 0, 0.5);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: rgba(0, 0, 0, 0.6);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 .portal:hover {
   box-shadow: 0 0 20px #f7f1c0, 0 0 30px #bde672;
@@ -46,6 +45,7 @@
   width: 60px;
   height: 54px;
   transform: translate(-50%, -50%) rotate(-45deg);
+  cursor: pointer;
 }
 .heart::before,
 .heart::after {
@@ -56,14 +56,8 @@
   background: rgba(255, 0, 0, 0.4);
   border-radius: 50%;
 }
-.heart::before {
-  top: -30px;
-  left: 0;
-}
-.heart::after {
-  left: 30px;
-  top: 0;
-}
+.heart::before { top: -30px; left: 0; }
+.heart::after { top: 0; left: 30px; }
 
 .rectangle {
   top: 30%;
@@ -71,6 +65,7 @@
   width: 100px;
   height: 70px;
   border-radius: 10px;
+  cursor: pointer;
 }
 
 .losange {
@@ -79,12 +74,50 @@
   width: 80px;
   height: 80px;
   transform: rotate(45deg);
+  cursor: pointer;
+}
+
+.room {
+  display: none;
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.85);
+  color: gold;
+  padding: 40px;
+  box-sizing: border-box;
+  z-index: 3;
+  animation: fadeIn 1s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@media (max-width: 768px) {
+  .heart { top: 45%; left: 30%; }
+  .rectangle { top: 25%; left: 60%; width: 80px; height: 50px; }
+  .losange { top: 65%; left: 35%; width: 60px; height: 60px; }
 }
 
   </style>
 </head>
 <body>
-  <div class="glow-circle"></div><a href="orchard.html"><div class="portal heart"></div></a> <a href="bonsai.html"><div class="portal rectangle"></div></a> <a href="leaf.html"><div class="portal losange"></div></a>
+  <div class="glow-circle"></div>  <div class="portal heart" onclick="showRoom('orchard')"></div>
+  <div class="portal rectangle" onclick="showRoom('bonsai')"></div>
+  <div class="portal losange" onclick="showRoom('leaf')"></div>  <div id="orchard" class="room">Welcome to the Orchard.</div>
+  <div id="bonsai" class="room">You are now under the Bonsai.</div>
+  <div id="leaf" class="room">This is the Leaf Chamber.</div>  <script>
+    // Apple redirect to help.html
+    const isApple = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+    if (isApple) {
+      setTimeout(() => { window.location.href = 'help.html'; }, 2000);
+    }
 
-</body>
+    function showRoom(roomId) {
+      document.querySelectorAll('.room').forEach(r => r.style.display = 'none');
+      document.getElementById(roomId).style.display = 'block';
+    }
+  </script></body>
 </html>
