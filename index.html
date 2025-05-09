@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Arbrustice</title>
   <style>
     body {
@@ -11,88 +11,47 @@
       background: url('background.jpg') no-repeat center center fixed;
       background-size: cover;
       overflow: hidden;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
-    .portal {
+    .bonsai-label {
       position: absolute;
-      width: 100px;
-      height: 100px;
+      top: 35%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.3);
+      color: rgba(255, 215, 0, 0.7);
+      padding: 4px 12px;
+      font-size: 13px;
+      border-radius: 20px;
+      font-style: italic;
+      text-shadow: 0 0 6px rgba(255, 215, 0, 0.3);
+      pointer-events: none;
+      animation: fadePulse 2.8s ease-in-out infinite;
+    }
+
+    @keyframes fadePulse {
+      0% { opacity: 0.3; }
+      50% { opacity: 1; }
+      100% { opacity: 0.3; }
+    }
+
+    .heart-btn {
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       cursor: pointer;
-      overflow: hidden;
-      transition: transform 0.3s ease;
-    }
-
-    .symbol {
-      width: 100%;
-      height: 100%;
-      opacity: 0;
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center;
-      transition: opacity 0.3s ease, transform 0.4s ease;
-    }
-
-    .portal:hover .symbol {
-      opacity: 1;
-      transform: scale(1.1);
-      box-shadow: 0 0 20px gold;
-    }
-
-    .active .symbol {
-      opacity: 1 !important;
-      transform: scale(1.2);
-      box-shadow: 0 0 25px gold;
-    }
-
-    #p1 .symbol { background-image: url('orchard/leaf.png'); }
-    #p2 .symbol { background-image: url('bonsai/heart.png'); }
-    #p3 .symbol { background-image: url('designs/triangle.png'); }
-    #p4 .symbol { background-image: url('other/spiral.png'); }
-
-    #p1 { top: 22%; left: 15%; }
-    #p2 { top: 22%; right: 15%; }
-    #p3 { bottom: 22%; left: 15%; }
-    #p4 { bottom: 22%; right: 15%; }
-
-    .fade-out {
-      opacity: 0;
-      transition: opacity 0.5s ease;
+      width: 100px;
+      height: auto;
     }
   </style>
-  <script>
-    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-    const isAppleMobile = /iPhone|iPad|iPod/.test(userAgent) && /AppleWebKit/.test(userAgent) && !/Android/.test(userAgent);
-
-    if (isAppleMobile) {
-      window.location.href = "help.html";
-    }
-
-    function goTo(id, url) {
-      const el = document.getElementById(id);
-      el.classList.add("active");
-
-      setTimeout(() => {
-        document.body.classList.add("fade-out");
-      }, 400);
-
-      setTimeout(() => {
-        window.location.href = url;
-      }, 900);
-    }
-  </script>
 </head>
 <body>
-  <div id="p1" class="portal" onclick="goTo('p1', 'orchard/')">
-    <div class="symbol"></div>
-  </div>
-  <div id="p2" class="portal" onclick="goTo('p2', 'bonsai/')">
-    <div class="symbol"></div>
-  </div>
-  <div id="p3" class="portal" onclick="goTo('p3', 'designs/')">
-    <div class="symbol"></div>
-  </div>
-  <div id="p4" class="portal" onclick="goTo('p4', 'other/')">
-    <div class="symbol"></div>
-  </div>
+
+  <div class="bonsai-label">Immersive Room</div>
+
+  <img src="heart.png" class="heart-btn" onclick="window.location.replace('bonsai.html')" />
+
 </body>
 </html>
