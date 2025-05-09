@@ -24,26 +24,36 @@
       z-index: 2;
     }
 
-    .apple-zone::before {
+    .apple-glow {
       content: "";
       position: absolute;
       width: 100%;
       height: 100%;
       border-radius: 50%;
       box-shadow: 0 0 25px 10px rgba(255, 0, 0, 0.3);
-      opacity: 0;
-      transition: opacity 0.4s ease, box-shadow 0.4s ease;
+      transition: box-shadow 0.3s ease;
+      pointer-events: none;
     }
 
-    .apple-zone:hover::before {
-      opacity: 1;
-      box-shadow: 0 0 40px 20px rgba(255, 0, 0, 0.6);
+    .apple-zone.clicked .apple-glow {
+      box-shadow: 0 0 80px 30px rgba(255, 0, 0, 0.8);
     }
   </style>
 </head>
 <body>
 
-  <div class="apple-zone" onclick="window.location.href='bonsai/'"></div>
+  <div class="apple-zone" onclick="activateApple(this)">
+    <div class="apple-glow"></div>
+  </div>
+
+  <script>
+    function activateApple(el) {
+      el.classList.add("clicked");
+      setTimeout(() => {
+        window.location.href = "bonsai/";
+      }, 300);
+    }
+  </script>
 
 </body>
 </html>
