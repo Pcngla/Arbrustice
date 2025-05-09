@@ -10,42 +10,50 @@
       height: 100%;
       background: #000 url('background.jpg') center center / cover no-repeat fixed;
       overflow: hidden;
-    }.overlay {
+    }.glow-circle {
   position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0, 0, 0, 0.3);
-  z-index: 0;
+  top: 10%;
+  left: 50%;
+  width: 150px;
+  height: 150px;
+  margin-left: -75px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,200,0.08) 0%, rgba(0,0,0,0) 70%);
+  animation: pulseGlow 6s ease-in-out infinite;
+  z-index: 1;
+}
+@keyframes pulseGlow {
+  0% { transform: scale(0.95); opacity: 0.4; }
+  50% { transform: scale(1.05); opacity: 0.7; }
+  100% { transform: scale(0.95); opacity: 0.4; }
 }
 
 .portal {
   position: absolute;
   z-index: 2;
   cursor: pointer;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-  background: rgba(0,0,0,0.6);
+  background: rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
 .portal:hover {
-  box-shadow: 0 0 20px #fdf6d8, 0 0 35px #c3ff6b;
+  box-shadow: 0 0 20px #f7f1c0, 0 0 30px #bde672;
   transform: scale(1.1);
 }
 
 .heart {
   top: 40%;
-  left: 18%;
+  left: 20%;
   width: 60px;
   height: 54px;
-  background: transparent;
   transform: translate(-50%, -50%) rotate(-45deg);
 }
-.heart::after,
-.heart::before {
+.heart::before,
+.heart::after {
   content: "";
   position: absolute;
   width: 60px;
   height: 54px;
-  background: rgba(255, 0, 0, 0.5);
+  background: rgba(255, 0, 0, 0.4);
   border-radius: 50%;
 }
 .heart::before {
@@ -57,41 +65,26 @@
   top: 0;
 }
 
-.bonsai {
+.rectangle {
   top: 30%;
   left: 70%;
   width: 100px;
   height: 70px;
-  border-radius: 8px;
-}
-.bonsai:hover {
-  animation: bonsaiWind 2s ease-in-out infinite alternate;
-}
-@keyframes bonsaiWind {
-  from { transform: scale(1) rotate(0deg); }
-  to { transform: scale(1.02) rotate(2deg); }
+  border-radius: 10px;
 }
 
 .losange {
   top: 70%;
-  left: 30%;
-  width: 60px;
-  height: 60px;
+  left: 40%;
+  width: 80px;
+  height: 80px;
   transform: rotate(45deg);
-}
-
-.smile {
-  bottom: 10%;
-  right: 10%;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
 }
 
   </style>
 </head>
 <body>
-  <div class="overlay"></div><a href="orchard.html"><div class="portal heart"></div></a> <a href="gate.html"><div class="portal bonsai"></div></a> <a href="archive.html"><div class="portal losange"></div></a> <a href="root.html"><div class="portal smile"></div></a>
+  <div class="glow-circle"></div><a href="orchard.html"><div class="portal heart"></div></a> <a href="bonsai.html"><div class="portal rectangle"></div></a> <a href="leaf.html"><div class="portal losange"></div></a>
 
 </body>
 </html>
