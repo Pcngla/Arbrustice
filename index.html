@@ -15,77 +15,89 @@
 
     .portal {
       position: absolute;
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
       cursor: pointer;
-      box-shadow: 0 0 12px rgba(255, 215, 0, 0.4);
-      background-color: rgba(0, 0, 0, 0.3);
+      transition: transform 0.5s ease, box-shadow 0.5s ease;
+      animation: float 4s ease-in-out infinite;
     }
 
     .portal:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 25px gold;
+      transform: scale(1.07);
+      box-shadow: 0 0 30px gold;
+    }
+
+    .rectangle, .square, .losange {
+      background-color: rgba(0, 0, 0, 0.15);
+      border: 2px solid gold;
+      box-shadow: 0 0 12px rgba(255, 215, 0, 0.3);
     }
 
     .rectangle {
       width: 120px;
       height: 60px;
-      border-radius: 12px;
-      border: 2px solid gold;
+      border-radius: 10px;
     }
 
     .square {
       width: 80px;
       height: 80px;
-      border: 2px solid gold;
     }
 
     .losange {
       width: 80px;
       height: 80px;
       transform: rotate(45deg);
-      border: 2px solid gold;
     }
 
-    .heart {
+    .bonsai-heart {
       width: 80px;
       height: 80px;
-      background-color: transparent;
     }
 
-    .heart::before,
-    .heart::after {
+    .bonsai-heart::before,
+    .bonsai-heart::after {
       content: "";
       position: absolute;
       width: 80px;
       height: 80px;
-      background: rgba(255, 0, 0, 0.3);
+      background: rgba(255, 0, 0, 0.25);
       border-radius: 50%;
-      box-shadow: 0 0 15px red;
+      box-shadow: 0 0 15px crimson;
     }
 
-    .heart::before {
+    .bonsai-heart::before {
       top: 0;
       left: 0;
     }
 
-    .heart::after {
+    .bonsai-heart::after {
       top: 0;
       left: 40px;
     }
 
-    /* Positions */
-    #p1 { top: 20%; left: 10%; }
-    #p2 { top: 20%; right: 10%; }
-    #p3 { bottom: 20%; left: 10%; }
-    #p4 { bottom: 20%; right: 10%; }
+    /* Portal Positions - clean and centered layout */
+    #p1 { top: 25%; left: 15%; }
+    #p2 { top: 25%; right: 15%; }
+    #p3 { bottom: 25%; left: 15%; }
+    #p4 { bottom: 25%; right: 15%; }
 
-    /* Fade transition */
+    /* Floating animation */
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    /* Fade transition on click */
     .fade-out {
       opacity: 0;
       transition: opacity 0.5s ease;
     }
   </style>
   <script>
+    // Mobile redirect
+    if (window.innerWidth <= 768) {
+      window.location.href = "help.html";
+    }
+
     function goTo(url) {
       document.body.classList.add("fade-out");
       setTimeout(() => {
@@ -95,9 +107,9 @@
   </script>
 </head>
 <body>
-  <div id="p1" class="portal heart" onclick="goTo('orchard.html')"></div>
-  <div id="p2" class="portal rectangle" onclick="goTo('bonsai.html')"></div>
-  <div id="p3" class="portal losange" onclick="goTo('designs.html')"></div>
-  <div id="p4" class="portal square" onclick="goTo('other.html')"></div>
+  <div id="p1" class="portal rectangle" onclick="goTo('orchard/')"></div>
+  <div id="p2" class="portal bonsai-heart" onclick="goTo('bonsai/')"></div>
+  <div id="p3" class="portal losange" onclick="goTo('designs/')"></div>
+  <div id="p4" class="portal square" onclick="goTo('other/')"></div>
 </body>
 </html>
