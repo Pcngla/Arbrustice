@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Orchard Room</title>
@@ -11,51 +10,47 @@
       height: 100vh;
       background: linear-gradient(145deg, #5b0000, #9e0d0d, #2b0000);
       background-size: 400% 400%;
-      animation: flow 20s ease infinite;
+      animation: flow 20s ease infinite, fadeIn 2s ease forwards;
       overflow: hidden;
-    }
+      opacity: 0;
+    }@keyframes flow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
 
-    @keyframes flow {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
 
-    .line-pattern {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background-image: 
-        linear-gradient(to right, rgba(0,0,0,0.4) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(0,0,0,0.4) 1px, transparent 1px);
-      background-size: 50px 50px;
-      pointer-events: none;
-    }
+.line-pattern {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(to right, rgba(0,0,0,0.3) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0,0,0,0.3) 1px, transparent 1px);
+  background-size: 50px 50px;
+  pointer-events: none;
+}
 
-    #back-btn {
-      position: absolute;
-      bottom: 20px;
-      left: 20px;
-      width: 50px;
-      cursor: pointer;
-      filter: drop-shadow(0 0 8px black);
-      transition: transform 0.3s ease;
-    }
+#back-btn {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  width: 50px;
+  cursor: pointer;
+  filter: drop-shadow(0 0 8px black);
+  transition: transform 0.3s ease;
+}
 
-    #back-btn:hover {
-      transform: scale(1.1);
-    }
+#back-btn:hover {
+  transform: scale(1.1);
+}
+
   </style>
 </head>
-<body>
-
-  <!-- Grid overlay to simulate ruby panel structure -->
-  <div class="line-pattern"></div>
-
-  <!-- Back to home -->
-  <a href="index.html">
-    <img id="back-btn" src="leaf.png" alt="Back to homepage">
-  </a>
-
-</body>
+<body>  <div class="line-pattern"></div>  <a href="../index.html">
+    <img id="back-btn" src="../leaf.png" alt="Back">
+  </a></body>
 </html>
