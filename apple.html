@@ -1,65 +1,78 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Ruby Apple Room</title>
+  <title>Obsidian Apple Room</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     html, body {
       margin: 0;
       padding: 0;
       height: 100vh;
-      background: black;
       overflow: hidden;
-      background-image: url('background.jpg');
+      background: black;
+      background-image: url('apple_room_background.jpg');
       background-size: cover;
       background-position: center;
-    }
+      animation: fadeIn 2s ease forwards;
+      opacity: 0;
+    }@keyframes fadeIn {
+  to { opacity: 1; }
+}
 
-    .apple {
-      position: absolute;
-      width: 70px;
-      transition: transform 0.4s ease, filter 0.4s ease;
-    }
+#apple-core {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120px;
+  animation: pulse 5s ease-in-out infinite;
+  filter: drop-shadow(0 0 12px crimson);
+}
 
-    .apple:hover {
-      transform: scale(1.1);
-      filter: drop-shadow(0 0 12px red) brightness(1.5);
-    }
+@keyframes pulse {
+  0% { transform: translate(-50%, -50%) scale(1); opacity: 0.9; }
+  50% { transform: translate(-50%, -50%) scale(1.05); opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(1); opacity: 0.9; }
+}
 
-    /* Apple placement - floating, magical layout */
-    #a1 { top: 30%; left: 20%; }
-    #a2 { top: 50%; left: 40%; }
-    #a3 { top: 60%; left: 65%; }
-    #a4 { top: 35%; left: 75%; }
+.rune {
+  position: absolute;
+  width: 50px;
+  animation: orbit 10s linear infinite;
+  filter: drop-shadow(0 0 8px red);
+}
 
-    /* Back Button */
-    #back-btn {
-      position: absolute;
-      bottom: 20px;
-      left: 20px;
-      width: 50px;
-      cursor: pointer;
-      filter: drop-shadow(0 0 10px crimson);
-      transition: transform 0.3s ease;
-    }
+.rune:nth-child(2) { top: 20%; left: 50%; }
+.rune:nth-child(3) { top: 50%; left: 80%; }
+.rune:nth-child(4) { top: 80%; left: 50%; }
+.rune:nth-child(5) { top: 50%; left: 20%; }
 
-    #back-btn:hover {
-      transform: scale(1.1);
-    }
+@keyframes orbit {
+  0% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(180deg) scale(1.05); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+#back-btn {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  width: 50px;
+  cursor: pointer;
+  filter: drop-shadow(0 0 10px crimson);
+  transition: transform 0.3s ease;
+}
+
+#back-btn:hover {
+  transform: scale(1.1);
+}
+
   </style>
 </head>
-<body>
-
-  <img id="a1" class="apple" src="spiral.png" alt="ruby apple">
-  <img id="a2" class="apple" src="spiral.png" alt="ruby apple">
-  <img id="a3" class="apple" src="spiral.png" alt="ruby apple">
-  <img id="a4" class="apple" src="spiral.png" alt="ruby apple">
-
-  <!-- Back to home -->
-  <a href="index.html">
+<body>  <img id="apple-core" src="spiral.png" alt="obsidian apple">  <img class="rune" src="heart.png" alt="rune">
+  <img class="rune" src="triangle.png" alt="rune">
+  <img class="rune" src="leaf.png" alt="rune">
+  <img class="rune" src="spiral.png" alt="rune">  <a href="index.html">
     <img id="back-btn" src="leaf.png" alt="Back">
-  </a>
-
-</body>
+  </a></body>
 </html>
