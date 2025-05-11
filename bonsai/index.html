@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Bonsai Room</title>
@@ -11,56 +10,54 @@
       background: black;
       height: 100vh;
       overflow: hidden;
-      background-image: url('background.jpg');
+      background-image: url('../background.jpg');
       background-size: cover;
       background-position: center;
-    }
+      animation: fadeIn 2s ease forwards;
+      opacity: 0;
+    }@keyframes fadeIn {
+  to { opacity: 1; }
+}
 
-    .rune {
-      position: absolute;
-      width: 60px;
-      height: 60px;
-      animation: rotate 6s linear infinite;
-      filter: drop-shadow(0 0 12px red);
-    }
+.rune {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  animation: rotate 6s linear infinite;
+  filter: drop-shadow(0 0 12px crimson);
+  transform-origin: center;
+}
 
-    /* Place 4 runes in circular layout */
-    #rune1 { top: 25%; left: 50%; transform: translate(-50%, -50%) rotate(0deg); }
-    #rune2 { top: 50%; left: 75%; transform: translate(-50%, -50%) rotate(90deg); }
-    #rune3 { top: 75%; left: 50%; transform: translate(-50%, -50%) rotate(180deg); }
-    #rune4 { top: 50%; left: 25%; transform: translate(-50%, -50%) rotate(270deg); }
+#rune1 { top: 25%; left: 50%; transform: translate(-50%, -50%); }
+#rune2 { top: 50%; left: 75%; transform: translate(-50%, -50%); }
+#rune3 { top: 75%; left: 50%; transform: translate(-50%, -50%); }
+#rune4 { top: 50%; left: 25%; transform: translate(-50%, -50%); }
 
-    @keyframes rotate {
-      0% { transform: translate(-50%, -50%) rotate(0deg); }
-      100% { transform: translate(-50%, -50%) rotate(360deg); }
-    }
+@keyframes rotate {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
 
-    #back-btn {
-      position: absolute;
-      bottom: 20px;
-      left: 20px;
-      width: 50px;
-      cursor: pointer;
-      filter: drop-shadow(0 0 10px gold);
-      transition: transform 0.3s ease;
-    }
+#back-btn {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  width: 50px;
+  cursor: pointer;
+  filter: drop-shadow(0 0 10px gold);
+  transition: transform 0.3s ease;
+}
 
-    #back-btn:hover {
-      transform: scale(1.1);
-    }
+#back-btn:hover {
+  transform: scale(1.1);
+}
+
   </style>
 </head>
-<body>
-
-  <img id="rune1" class="rune" src="triangle.png" alt="rune">
-  <img id="rune2" class="rune" src="spiral.png" alt="rune">
-  <img id="rune3" class="rune" src="heart.png" alt="rune">
-  <img id="rune4" class="rune" src="leaf.png" alt="rune">
-
-  <!-- Back to home -->
-  <a href="index.html">
-    <img id="back-btn" src="leaf.png" alt="Back to homepage">
-  </a>
-
-</body>
+<body>  <img id="rune1" class="rune" src="../triangle.png" alt="rune">
+  <img id="rune2" class="rune" src="../spiral.png" alt="rune">
+  <img id="rune3" class="rune" src="../heart.png" alt="rune">
+  <img id="rune4" class="rune" src="../leaf.png" alt="rune">  <a href="../index.html">
+    <img id="back-btn" src="../leaf.png" alt="Back">
+  </a></body>
 </html>
