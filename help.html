@@ -1,41 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
   <title>Help Room</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body {
+    html, body {
       margin: 0;
       padding: 0;
-      background: #000;
-      color: crimson;
-      font-family: 'Segoe UI', sans-serif;
+      background: black;
+      color: white;
+      font-family: 'Georgia', serif;
+      height: 100vh;
+      overflow: hidden;
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
-      height: 100vh;
+      justify-content: center;
       text-align: center;
-      animation: fadeIn 1s ease;
     }
 
-    a {
-      margin-top: 20px;
-      color: gold;
-      font-size: 1.2rem;
-      text-decoration: none;
+    #leaf {
+      width: 80px;
+      margin-bottom: 20px;
+      animation: glow 3s ease-in-out infinite alternate;
+      filter: drop-shadow(0 0 12px gold);
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+    @keyframes glow {
+      from { transform: scale(1); opacity: 0.8; }
+      to   { transform: scale(1.05); opacity: 1; }
+    }
+
+    .message {
+      font-size: 1.2em;
+      max-width: 80%;
+      line-height: 1.5em;
+      opacity: 0.9;
+    }
+
+    #back-btn {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      width: 50px;
+      filter: drop-shadow(0 0 10px red);
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    #back-btn:hover {
+      transform: scale(1.1);
     }
   </style>
 </head>
 <body>
-  <h1>Welcome to the Help Room</h1>
-  <p>You’ve entered from a mobile device. This page will guide or assist you.</p>
-  <a href="index.html">Return to Arbrustice</a>
+
+  <img id="leaf" src="leaf.png" alt="Help Leaf">
+
+  <div class="message">
+    Welcome, traveler.<br><br>
+    This is the Help Room of Arbrustice.<br>
+    Soon, you'll find access to our products, CV, and contact options here.
+  </div>
+
+  <a href="index.html">
+    <img id="back-btn" src="leaf.png" alt="Back to homepage">
+  </a>
+
 </body>
 </html>
