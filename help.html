@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Help Room</title>
@@ -8,65 +7,121 @@
     html, body {
       margin: 0;
       padding: 0;
+      height: 100vh;
       background: black;
       color: white;
       font-family: 'Georgia', serif;
-      height: 100vh;
       overflow: hidden;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
-    }
+      animation: fadeIn 2s ease forwards;
+      opacity: 0;
+    }@keyframes fadeIn {
+  to { opacity: 1; }
+}
 
-    #leaf {
-      width: 80px;
-      margin-bottom: 20px;
-      animation: glow 3s ease-in-out infinite alternate;
-      filter: drop-shadow(0 0 12px gold);
-    }
+#leaf {
+  width: 80px;
+  margin-bottom: 20px;
+  animation: glow 3s ease-in-out infinite alternate;
+  filter: drop-shadow(0 0 12px gold);
+  opacity: 0;
+  transition: opacity 1s ease;
+}
 
-    @keyframes glow {
-      from { transform: scale(1); opacity: 0.8; }
-      to   { transform: scale(1.05); opacity: 1; }
-    }
+#leaf.visible {
+  opacity: 1;
+}
 
-    .message {
-      font-size: 1.2em;
-      max-width: 80%;
-      line-height: 1.5em;
-      opacity: 0.9;
-    }
+@keyframes glow {
+  from { transform: scale(1); opacity: 0.8; }
+  to   { transform: scale(1.05); opacity: 1; }
+}
 
-    #back-btn {
-      position: absolute;
-      bottom: 20px;
-      left: 20px;
-      width: 50px;
-      filter: drop-shadow(0 0 10px red);
-      cursor: pointer;
-      transition: transform 0.3s ease;
-    }
+.message {
+  font-size: 1.2em;
+  max-width: 80%;
+  line-height: 1.5em;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
 
-    #back-btn:hover {
-      transform: scale(1.1);
-    }
+.message.visible {
+  opacity: 0.9;
+}
+
+.loader-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 200px;
+  animation: fadeOut 2s ease 3s forwards;
+}
+
+.loader-icon {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  animation: spin 3s linear infinite;
+}
+
+.loader-icon:nth-child(1) { top: 0; left: 50%; transform: translateX(-50%); }
+.loader-icon:nth-child(2) { top: 50%; left: 100%; transform: translateY(-50%); }
+.loader-icon:nth-child(3) { top: 100%; left: 50%; transform: translate(-50%, -100%); }
+.loader-icon:nth-child(4) { top: 50%; left: 0%; transform: translateY(-50%); }
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes fadeOut {
+  to { opacity: 0; visibility: hidden; }
+}
+
+#back-btn {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  width: 50px;
+  filter: drop-shadow(0 0 10px red);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  opacity: 0;
+}
+
+#back-btn.visible {
+  opacity: 1;
+}
+
+#back-btn:hover {
+  transform: scale(1.1);
+}
+
   </style>
 </head>
-<body>
-
-  <img id="leaf" src="leaf.png" alt="Help Leaf">
-
-  <div class="message">
-    Welcome, traveler.<br><br>
-    This is the Help Room of Arbrustice.<br>
-    Soon, you'll find access to our products, CV, and contact options here.
-  </div>
-
-  <a href="index.html">
-    <img id="back-btn" src="leaf.png" alt="Back to homepage">
-  </a>
-
-</body>
+<body>  <div class="loader-container" id="loader">
+    <img class="loader-icon" src="leaf.png" alt="rune">
+    <img class="loader-icon" src="triangle.png" alt="rune">
+    <img class="loader-icon" src="spiral.png" alt="rune">
+    <img class="loader-icon" src="heart.png" alt="rune">
+  </div>  <img id="leaf" src="leaf.png" alt="Help Leaf">  <div class="message">
+    Welcome to the Help Room of Arbrustice.<br>
+    Soon, you'll find links to products, contact options, or the CV room.
+  </div>  <a href="index.html">
+    <img id="back-btn" src="leaf.png" alt="Back">
+  </a>  <script>
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById('leaf').classList.add('visible');
+        document.querySelector('.message').classList.add('visible');
+        document.getElementById('back-btn').classList.add('visible');
+      }, 3000);
+    });
+  </script></body>
 </html>
