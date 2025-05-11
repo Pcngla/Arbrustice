@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Arbrustice</title>
@@ -13,90 +12,95 @@
       width: 100vw;
       background: black;
       overflow: hidden;
-    }
+    }body {
+  background-image: url('background.jpg');
+  background-size: cover;
+  background-position: center;
+  animation: fadeIn 2s ease forwards;
+  opacity: 0;
+}
 
-    body {
-      background-image: url('background.jpg');
-      background-size: cover;
-      background-position: center;
-      animation: fadeIn 2s ease forwards;
-      opacity: 0;
-    }
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
 
-    @keyframes fadeIn {
-      to { opacity: 1; }
-    }
+.click-zone {
+  position: absolute;
+  cursor: pointer;
+  transition: transform 0.4s ease, filter 0.4s ease, opacity 1s ease;
+  filter: drop-shadow(0 0 5px rgba(255,255,255,0.3));
+  opacity: 0;
+}
 
-    .click-zone {
-      position: absolute;
-      cursor: pointer;
-      transition: transform 0.3s ease, filter 0.3s ease;
-      filter: drop-shadow(0 0 5px rgba(255,255,255,0.4));
-    }
+.click-zone.visible {
+  opacity: 1;
+}
 
-    .click-zone:hover {
-      transform: scale(1.08);
-      filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.9));
-    }
+.click-zone:hover {
+  transform: scale(1.08);
+  filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.9));
+}
 
-    /* Portal Positions */
-    #bonsai-btn {
-      top: 60%;
-      left: 10%;
-      width: 80px;
-    }
+/* Portal Positions */
+#bonsai-btn { top: 60%; left: 10%; width: 80px; }
+#apple-btn { top: 55%; right: 8%; width: 70px; }
+#help-btn { top: 10%; right: 20%; width: 50px; }
+#orchard-btn { bottom: 10%; left: 45%; width: 65px; }
 
-    #apple-btn {
-      top: 55%;
-      right: 8%;
-      width: 70px;
-    }
+.loader-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 200px;
+  animation: fadeOut 2s ease 3s forwards;
+}
 
-    #help-btn {
-      top: 10%;
-      right: 20%;
-      width: 50px;
-    }
+.loader-icon {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  animation: spin 3s linear infinite;
+}
 
-    #orchard-btn {
-      bottom: 10%;
-      left: 45%;
-      width: 65px;
-    }
+.loader-icon:nth-child(1) { top: 0; left: 50%; transform: translateX(-50%); }
+.loader-icon:nth-child(2) { top: 50%; left: 100%; transform: translateY(-50%); }
+.loader-icon:nth-child(3) { top: 100%; left: 50%; transform: translate(-50%, -100%); }
+.loader-icon:nth-child(4) { top: 50%; left: 0%; transform: translateY(-50%); }
 
-    /* Optional mobile favicon animation */
-    link[rel="icon"] {
-      animation: pulseGlow 4s ease-in-out infinite;
-    }
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
 
-    @keyframes pulseGlow {
-      0% { filter: drop-shadow(0 0 1px crimson); }
-      50% { filter: drop-shadow(0 0 6px crimson); }
-      100% { filter: drop-shadow(0 0 1px crimson); }
-    }
+@keyframes fadeOut {
+  to { opacity: 0; visibility: hidden; }
+}
+
   </style>
 </head>
-<body>
-
-  <!-- Bonsai Portal -->
-  <a href="bonsai/bonsai.html">
+<body>  <div class="loader-container" id="loader">
+    <img class="loader-icon" src="heart.png" alt="rune1">
+    <img class="loader-icon" src="triangle.png" alt="rune2">
+    <img class="loader-icon" src="leaf.png" alt="rune3">
+    <img class="loader-icon" src="spiral.png" alt="rune4">
+  </div>  <a href="bonsai/bonsai.html">
     <img id="bonsai-btn" class="click-zone" src="heart.png" alt="bonsai portal">
   </a>
-
-  <!-- Apple Portal -->
   <a href="apple.html">
     <img id="apple-btn" class="click-zone" src="spiral.png" alt="apple portal">
   </a>
-
-  <!-- Help Portal -->
   <a href="help.html">
     <img id="help-btn" class="click-zone" src="leaf.png" alt="help portal">
   </a>
-
-  <!-- Orchard Portal -->
   <a href="orchard/index.html">
     <img id="orchard-btn" class="click-zone" src="triangle.png" alt="orchard portal">
-  </a>
-
-</body>
+  </a>  <script>
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.querySelectorAll('.click-zone').forEach(el => el.classList.add('visible'));
+      }, 3000);
+    });
+  </script></body>
 </html>
