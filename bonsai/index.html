@@ -25,7 +25,12 @@
   height: 60px;
   animation: rotate 6s linear infinite;
   filter: drop-shadow(0 0 12px crimson);
-  transform-origin: center;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.rune.visible {
+  opacity: 1;
 }
 
 #rune1 { top: 25%; left: 50%; transform: translate(-50%, -50%); }
@@ -38,6 +43,37 @@
   100% { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
+.loader-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 200px;
+  animation: fadeOut 2s ease 3s forwards;
+}
+
+.loader-icon {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  animation: spin 3s linear infinite;
+}
+
+.loader-icon:nth-child(1) { top: 0; left: 50%; transform: translateX(-50%); }
+.loader-icon:nth-child(2) { top: 50%; left: 100%; transform: translateY(-50%); }
+.loader-icon:nth-child(3) { top: 100%; left: 50%; transform: translate(-50%, -100%); }
+.loader-icon:nth-child(4) { top: 50%; left: 0%; transform: translateY(-50%); }
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes fadeOut {
+  to { opacity: 0; visibility: hidden; }
+}
+
 #back-btn {
   position: absolute;
   bottom: 20px;
@@ -46,6 +82,11 @@
   cursor: pointer;
   filter: drop-shadow(0 0 10px gold);
   transition: transform 0.3s ease;
+  opacity: 0;
+}
+
+#back-btn.visible {
+  opacity: 1;
 }
 
 #back-btn:hover {
@@ -54,10 +95,22 @@
 
   </style>
 </head>
-<body>  <img id="rune1" class="rune" src="../triangle.png" alt="rune">
+<body>  <div class="loader-container" id="loader">
+    <img class="loader-icon" src="../heart.png" alt="rune">
+    <img class="loader-icon" src="../spiral.png" alt="rune">
+    <img class="loader-icon" src="../triangle.png" alt="rune">
+    <img class="loader-icon" src="../leaf.png" alt="rune">
+  </div>  <img id="rune1" class="rune" src="../triangle.png" alt="rune">
   <img id="rune2" class="rune" src="../spiral.png" alt="rune">
   <img id="rune3" class="rune" src="../heart.png" alt="rune">
   <img id="rune4" class="rune" src="../leaf.png" alt="rune">  <a href="../index.html">
     <img id="back-btn" src="../leaf.png" alt="Back">
-  </a></body>
+  </a>  <script>
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.querySelectorAll('.rune').forEach(el => el.classList.add('visible'));
+        document.getElementById('back-btn').classList.add('visible');
+      }, 3000);
+    });
+  </script></body>
 </html>
