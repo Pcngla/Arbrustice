@@ -1,78 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
   <title>Bonsai Room</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body {
+    html, body {
       margin: 0;
       padding: 0;
-      background: url('../background.jpg') no-repeat center center fixed;
-      background-size: cover;
+      background: black;
+      height: 100vh;
       overflow: hidden;
-      font-family: 'Segoe UI', sans-serif;
-      animation: fadeIn 2s ease;
+      background-image: url('background.jpg');
+      background-size: cover;
+      background-position: center;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    .floating-buttons {
+    .rune {
       position: absolute;
-      bottom: 5%;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      z-index: 2;
+      width: 60px;
+      height: 60px;
+      animation: rotate 6s linear infinite;
+      filter: drop-shadow(0 0 12px red);
     }
 
-    .floating-buttons button {
-      background: rgba(255, 215, 0, 0.9);
-      color: black;
-      border: none;
-      padding: 14px 28px;
-      font-size: 16px;
-      border-radius: 12px;
+    /* Place 4 runes in circular layout */
+    #rune1 { top: 25%; left: 50%; transform: translate(-50%, -50%) rotate(0deg); }
+    #rune2 { top: 50%; left: 75%; transform: translate(-50%, -50%) rotate(90deg); }
+    #rune3 { top: 75%; left: 50%; transform: translate(-50%, -50%) rotate(180deg); }
+    #rune4 { top: 50%; left: 25%; transform: translate(-50%, -50%) rotate(270deg); }
+
+    @keyframes rotate {
+      0% { transform: translate(-50%, -50%) rotate(0deg); }
+      100% { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
+    #back-btn {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      width: 50px;
       cursor: pointer;
-      transition: background 0.3s ease;
-      box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+      filter: drop-shadow(0 0 10px gold);
+      transition: transform 0.3s ease;
     }
 
-    .floating-buttons button:hover {
-      background: crimson;
-      color: gold;
+    #back-btn:hover {
+      transform: scale(1.1);
     }
   </style>
 </head>
-<body onclick="enterImmersiveOnce()">
+<body>
 
-  <div class="floating-buttons">
-    <button onclick="window.location.href='bonsai2.html'">Enter Deeper Sanctuary</button>
-    <button onclick="window.location.href='../index.html'">Return to Portal</button>
-  </div>
+  <img id="rune1" class="rune" src="triangle.png" alt="rune">
+  <img id="rune2" class="rune" src="spiral.png" alt="rune">
+  <img id="rune3" class="rune" src="heart.png" alt="rune">
+  <img id="rune4" class="rune" src="leaf.png" alt="rune">
 
-  <script>
-    // Prevent Android back button from exiting
-    history.pushState(null, null, location.href);
-    window.addEventListener('popstate', function () {
-      location.href = "index.html";
-    });
+  <!-- Back to home -->
+  <a href="index.html">
+    <img id="back-btn" src="leaf.png" alt="Back to homepage">
+  </a>
 
-    // Fullscreen once
-    let alreadyEntered = false;
-    function enterImmersiveOnce() {
-      if (alreadyEntered) return;
-      alreadyEntered = true;
-      const el = document.documentElement;
-      if (el.requestFullscreen) el.requestFullscreen();
-      else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
-      else if (el.msRequestFullscreen) el.msRequestFullscreen();
-    }
-  </script>
 </body>
 </html>
