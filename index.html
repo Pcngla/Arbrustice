@@ -17,46 +17,40 @@
     }.portal {
   position: absolute;
   width: 60px;
-  cursor: pointer;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  filter: drop-shadow(0 0 5px #880000);
+  animation: pulse 4s ease-in-out infinite;
 }
 
 .portal:hover {
   transform: scale(1.1);
-  filter: drop-shadow(0 0 12px red);
+  filter: drop-shadow(0 0 15px crimson);
+}
+
+@keyframes pulse {
+  0%, 100% { filter: drop-shadow(0 0 5px #880000); }
+  50% { filter: drop-shadow(0 0 12px red); }
 }
 
 #heart { top: 28%; left: 15%; }
 #spiral { top: 40%; left: 45%; }
 #triangle { top: 28%; right: 15%; }
-#leaf { bottom: 20px; left: 50%; transform: translateX(-50%); width: 50px; }
-
-.label {
-  position: absolute;
-  color: violet;
-  font-family: Georgia, serif;
-  font-size: 14px;
-  text-shadow: 0 0 6px black;
+#leaf {
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
 }
-
-#label-heart { top: 42%; left: 15%; }
-#label-spiral { top: 55%; left: 45%; }
-#label-triangle { top: 42%; right: 15%; }
-#label-leaf { bottom: 5%; left: 50%; transform: translateX(-50%); }
 
   </style>
 </head>
-<body>  <!-- Portals -->  <a href="bonsai/index.html">
+<body>  <!-- Glowing clickable icons only -->  <a href="bonsai/index.html">
     <img id="heart" class="portal" src="heart.png" alt="Heart">
-  </a>
-  <div id="label-heart" class="label">bonsai portal</div>  <a href="apple.html">
+  </a>  <a href="apple.html">
     <img id="spiral" class="portal" src="spiral.png" alt="Apple">
-  </a>
-  <div id="label-spiral" class="label">apple portal</div>  <a href="designs/index.html">
+  </a>  <a href="designs/index.html">
     <img id="triangle" class="portal" src="triangle.png" alt="Triangle">
-  </a>
-  <div id="label-triangle" class="label">designs portal</div>  <a href="orchard/index.html">
+  </a>  <a href="orchard/index.html">
     <img id="leaf" class="portal" src="leaf.png" alt="Leaf">
-  </a>
-  <div id="label-leaf" class="label">orchard portal</div></body>
+  </a></body>
 </html>
