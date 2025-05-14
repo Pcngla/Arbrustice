@@ -1,53 +1,84 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Arbrustice</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="favicon.ico">
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <style>
     html, body {
       margin: 0;
       padding: 0;
       overflow: hidden;
-      height: 100vh;
-      background: url('background.jpg') no-repeat center center fixed;
-      background-size: cover;
+      height: 100%;
     }
-    a {
+
+    body {
+      background-image: url('background.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      position: relative;
+    }
+
+    .click-zone {
       position: absolute;
-      display: block;
       width: 60px;
       height: 60px;
-      transition: transform 0.3s ease;
+      z-index: 10;
     }
-    a img {
-      width: 100%;
+
+    /* Positioning zones */
+    #bonsai-zone {
+      top: 24%;
+      left: 28%;
+    }
+
+    #designs-zone {
+      top: 23%;
+      right: 23%;
+    }
+
+    #orchard-zone {
+      bottom: 8%;
+      left: 46%;
+    }
+
+    #apple-zone {
+      bottom: 16%;
+      right: 18%;
+      width: 80px;
+      height: 80px;
+    }
+
+    /* Glowing visible HELP leaf */
+    #help-leaf {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      width: 45px;
       height: auto;
-      opacity: 0;
+      z-index: 20;
+      animation: pulse 2s infinite;
+      filter: drop-shadow(0 0 8px orange);
     }
-    a:hover img {
-      opacity: 1;
-      transform: scale(1.2);
-    }
-    /* Invisible zones over the symbols in background.jpg */
-    #bonsai {
-      top: 25%; left: 30%; /* Heart */
-    }
-    #designs {
-      top: 25%; right: 30%; /* Triangle */
-    }
-    #apple {
-      bottom: 20%; left: 50%; transform: translateX(-50%); /* Obsidian heart apple */
-    }
-    #orchard {
-      bottom: 5%; left: 50%; transform: translateX(-50%); /* Leaf */
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
     }
   </style>
 </head>
 <body>
-  <a id="bonsai" href="bonsai/index.html"><img src="heart.png" alt="bonsai"></a>
-  <a id="designs" href="designs/index.html"><img src="triangle.png" alt="designs"></a>
-  <a id="apple" href="apple.html"><img src="spiral.png" alt="apple"></a>
-  <a id="orchard" href="orchard/index.html"><img src="leaf.png" alt="orchard"></a>
+  <!-- Click Zones -->
+  <a href="bonsai/index.html" class="click-zone" id="bonsai-zone"></a>
+  <a href="designs/index.html" class="click-zone" id="designs-zone"></a>
+  <a href="orchard/index.html" class="click-zone" id="orchard-zone"></a>
+  <a href="apple.html" class="click-zone" id="apple-zone"></a>
+
+  <!-- Visible Help Button -->
+  <a href="help.html">
+    <img id="help-leaf" src="leaf.png" alt="Help">
+  </a>
 </body>
 </html>
