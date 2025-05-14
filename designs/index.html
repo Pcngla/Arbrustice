@@ -1,86 +1,76 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Designs Room</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Designs Portal</title>
   <style>
     html, body {
       margin: 0;
       padding: 0;
       height: 100vh;
       overflow: hidden;
-      background: black url('../background.jpg') no-repeat center center fixed;
-      background-size: cover;
-      animation: fadeIn 2s ease forwards;
-      opacity: 0;
-    }
+      background: radial-gradient(ellipse at center, #000000 0%, #0b0b0b 100%);
+      font-family: 'Segoe UI', sans-serif;
+    }.neon-frame {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80vw;
+  height: 60vh;
+  border: 3px solid rgba(255, 0, 255, 0.7);
+  box-shadow: 0 0 20px magenta, 0 0 40px purple;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: pulse 2.5s infinite ease-in-out;
+  backdrop-filter: blur(3px);
+}
 
-    @keyframes fadeIn {
-      to { opacity: 1; }
-    }
+@keyframes pulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -50%) scale(1.05); }
+}
 
-    .rune {
-      position: absolute;
-      width: 60px;
-      height: 60px;
-      animation: rotate 6s linear infinite;
-      filter: drop-shadow(0 0 12px orange);
-      opacity: 0;
-      transition: opacity 1s ease;
-    }
+h1 {
+  color: white;
+  font-size: 3em;
+  text-shadow: 0 0 10px fuchsia, 0 0 20px magenta;
+  animation: glow 3s ease-in-out infinite alternate;
+}
 
-    .rune.visible {
-      opacity: 1;
-    }
+@keyframes glow {
+  from { text-shadow: 0 0 10px magenta; }
+  to { text-shadow: 0 0 20px violet, 0 0 30px magenta; }
+}
 
-    #rune1 { top: 25%; left: 50%; transform: translate(-50%, -50%); }
-    #rune2 { top: 50%; left: 75%; transform: translate(-50%, -50%); }
-    #rune3 { top: 75%; left: 50%; transform: translate(-50%, -50%); }
-    #rune4 { top: 50%; left: 25%; transform: translate(-50%, -50%); }
+a.back {
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+  color: gold;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 1.2em;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 10px 20px;
+  border: 1px solid gold;
+  border-radius: 8px;
+  transition: background 0.3s, transform 0.3s;
+}
 
-    @keyframes rotate {
-      0% { transform: translate(-50%, -50%) rotate(0deg); }
-      100% { transform: translate(-50%, -50%) rotate(360deg); }
-    }
+a.back:hover {
+  background: gold;
+  color: black;
+  transform: scale(1.1);
+}
 
-    #back-btn {
-      position: absolute;
-      bottom: 20px;
-      left: 20px;
-      width: 50px;
-      cursor: pointer;
-      filter: drop-shadow(0 0 10px orange);
-      opacity: 0;
-      transition: transform 0.3s ease, opacity 1s ease;
-    }
-
-    #back-btn.visible {
-      opacity: 1;
-    }
-
-    #back-btn:hover {
-      transform: scale(1.1);
-    }
   </style>
 </head>
 <body>
-  <img id="rune1" class="rune" src="../triangle.png" alt="rune">
-  <img id="rune2" class="rune" src="../spiral.png" alt="rune">
-  <img id="rune3" class="rune" src="../heart.png" alt="rune">
-  <img id="rune4" class="rune" src="../leaf.png" alt="rune">
-
-  <a href="../index.html">
-    <img id="back-btn" src="../leaf.png" alt="Back">
-  </a>
-
-  <script>
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        document.querySelectorAll('.rune').forEach(el => el.classList.add('visible'));
-        document.getElementById('back-btn').classList.add('visible');
-      }, 2000);
-    });
-  </script>
+  <div class="neon-frame">
+    <h1>Designs Portal</h1>
+  </div>
+  <a class="back" href="../index.html">Return to Bonsai</a>
 </body>
 </html>
