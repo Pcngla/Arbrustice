@@ -23,30 +23,21 @@
   transition: opacity 0.5s ease;
 }
 
-.zone:hover::after,
-.zone:active::after {
-  content: '';
+/* Obsidian apple animation container */
+#apple-animation {
   position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  animation: pulse 1s ease;
-  opacity: 1;
+  top: 715px;
+  left: 895px;
+  width: 230px;
+  height: 230px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
-#heart-zone:hover::after, #heart-zone:active::after {
-  background-image: url('heart.png');
-}
-#spiral-zone:hover::after, #spiral-zone:active::after {
-  background-image: url('spiral.png');
-}
-#triangle-zone:hover::after, #triangle-zone:active::after {
-  background-image: url('triangle.png');
-}
-#leaf-zone:hover::after, #leaf-zone:active::after {
-  background-image: url('leaf.png');
+.zone:hover + #apple-animation,
+.zone:active + #apple-animation {
+  opacity: 1;
 }
 
 @keyframes pulse {
@@ -55,18 +46,22 @@
   100% { transform: scale(1); opacity: 0.7; }
 }
 
-/* Specific positioning above background elements */
 #heart-zone { top: 46%; left: 14%; }
 #spiral-zone { top: 59%; left: 42%; }
 #triangle-zone { top: 32%; right: 12%; }
-#leaf-zone { bottom: 7%; left: 50%; transform: translateX(-50%); }
+#leaf-zone {
+  bottom: 7%;
+  left: 50%;
+  transform: translateX(-50%);
+}
 
   </style>
 </head>
-<body>  <a href="bonsai/index.html">
+<body>  <!-- Obsidian Apple Zone -->  <a href="apple.html">
+    <div class="zone" style="top: 715px; left: 895px; width: 230px; height: 230px;"></div>
+  </a>
+  <img id="apple-animation" src="obsidian_apple_shake_FINAL.gif" alt="apple effect">  <!-- Other portals (invisible zone style) -->  <a href="bonsai/index.html">
     <div id="heart-zone" class="zone"></div>
-  </a>  <a href="apple.html">
-    <div id="spiral-zone" class="zone"></div>
   </a>  <a href="designs/index.html">
     <div id="triangle-zone" class="zone"></div>
   </a>  <a href="orchard/index.html">
