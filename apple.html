@@ -12,12 +12,6 @@
       overflow: hidden;
       background: black url('background.jpg') no-repeat center center fixed;
       background-size: cover;
-      animation: fadeIn 2s ease forwards;
-      opacity: 0;
-    }
-
-    @keyframes fadeIn {
-      to { opacity: 1; }
     }
 
     .apple-container {
@@ -26,7 +20,6 @@
       left: 50%;
       transform: translate(-50%, -50%);
       width: 230px;
-      height: 230px;
       animation: pulse 4s ease-in-out infinite;
     }
 
@@ -37,7 +30,6 @@
 
     .apple-container img {
       width: 100%;
-      height: auto;
       filter: drop-shadow(0 0 20px crimson);
     }
 
@@ -48,12 +40,7 @@
       width: 50px;
       cursor: pointer;
       filter: drop-shadow(0 0 10px crimson);
-      opacity: 0;
-      transition: transform 0.3s ease, opacity 1s ease;
-    }
-
-    #back-btn.visible {
-      opacity: 1;
+      transition: transform 0.3s ease;
     }
 
     #back-btn:hover {
@@ -62,20 +49,14 @@
   </style>
 </head>
 <body>
+  <audio id="wind-sound" src="wind.mp3" autoplay></audio>
+
   <div class="apple-container">
     <img src="obsidian_apple_shake_FINAL.gif" alt="Obsidian Apple">
   </div>
 
-  <a href="index.html">
+  <a href="index.html" onclick="document.getElementById('wind-sound').play()">
     <img id="back-btn" src="leaf.png" alt="Back">
   </a>
-
-  <script>
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        document.getElementById('back-btn').classList.add('visible');
-      }, 2000);
-    });
-  </script>
 </body>
 </html>
