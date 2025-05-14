@@ -12,33 +12,21 @@
       overflow: hidden;
       background: black url('background.jpg') no-repeat center center fixed;
       background-size: cover;
-      animation: fadeIn 2s ease forwards;
-      opacity: 0;
-    }
-
-    @keyframes fadeIn {
-      to { opacity: 1; }
     }
 
     .help-leaf {
       position: absolute;
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -50%);
       width: 80px;
-      animation: float 3s ease-in-out infinite, glow 2s ease-in-out infinite;
-      filter: drop-shadow(0 0 15px lime);
-    }
-
-    @keyframes float {
-      0% { transform: translate(-50%, -50%) translateY(0); }
-      100% { transform: translate(-50%, -50%) translateY(-10px); }
+      transform: translate(-50%, -50%);
+      animation: glow 2.5s ease-in-out infinite;
+      filter: drop-shadow(0 0 10px lime);
     }
 
     @keyframes glow {
-      0% { filter: drop-shadow(0 0 5px lime); }
+      0%, 100% { filter: drop-shadow(0 0 5px lime); }
       50% { filter: drop-shadow(0 0 20px lime); }
-      100% { filter: drop-shadow(0 0 5px lime); }
     }
 
     #back-btn {
@@ -48,12 +36,8 @@
       width: 50px;
       cursor: pointer;
       filter: drop-shadow(0 0 10px lime);
-      opacity: 0;
-      transition: transform 0.3s ease, opacity 1s ease;
-    }
-
-    #back-btn.visible {
       opacity: 1;
+      transition: transform 0.3s ease;
     }
 
     #back-btn:hover {
@@ -67,13 +51,5 @@
   <a href="index.html">
     <img id="back-btn" src="leaf.png" alt="Back">
   </a>
-
-  <script>
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        document.getElementById('back-btn').classList.add('visible');
-      }, 1500);
-    });
-  </script>
 </body>
 </html>
