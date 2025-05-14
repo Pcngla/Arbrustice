@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Orchard Room</title>
@@ -8,103 +9,78 @@
       margin: 0;
       padding: 0;
       height: 100vh;
-      background: linear-gradient(145deg, #5b0000, #9e0d0d, #2b0000);
-      background-size: 400% 400%;
-      animation: flow 20s ease infinite, fadeIn 2s ease forwards;
       overflow: hidden;
+      background: black url('../background.jpg') no-repeat center center fixed;
+      background-size: cover;
+      animation: fadeIn 2s ease forwards;
       opacity: 0;
-    }@keyframes flow {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
+    }
 
-@keyframes fadeIn {
-  to { opacity: 1; }
-}
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
 
-.line-pattern {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-image: 
-    linear-gradient(to right, rgba(0,0,0,0.3) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0,0,0,0.3) 1px, transparent 1px);
-  background-size: 50px 50px;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 1s ease;
-}
+    .rune {
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      animation: rotate 6s linear infinite;
+      filter: drop-shadow(0 0 10px gold);
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
 
-.line-pattern.visible {
-  opacity: 1;
-}
+    .rune.visible {
+      opacity: 1;
+    }
 
-.loader-container {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 200px;
-  height: 200px;
-  animation: fadeOut 2s ease 3s forwards;
-}
+    #rune1 { top: 22%; left: 50%; transform: translate(-50%, -50%); }
+    #rune2 { top: 50%; left: 78%; transform: translate(-50%, -50%); }
+    #rune3 { top: 78%; left: 50%; transform: translate(-50%, -50%); }
+    #rune4 { top: 50%; left: 22%; transform: translate(-50%, -50%); }
 
-.loader-icon {
-  position: absolute;
-  width: 50px;
-  height: 50px;
-  animation: spin 3s linear infinite;
-}
+    @keyframes rotate {
+      0% { transform: translate(-50%, -50%) rotate(0deg); }
+      100% { transform: translate(-50%, -50%) rotate(360deg); }
+    }
 
-.loader-icon:nth-child(1) { top: 0; left: 50%; transform: translateX(-50%); }
-.loader-icon:nth-child(2) { top: 50%; left: 100%; transform: translateY(-50%); }
-.loader-icon:nth-child(3) { top: 100%; left: 50%; transform: translate(-50%, -100%); }
-.loader-icon:nth-child(4) { top: 50%; left: 0%; transform: translateY(-50%); }
+    #back-btn {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      width: 50px;
+      cursor: pointer;
+      filter: drop-shadow(0 0 10px gold);
+      opacity: 0;
+      transition: transform 0.3s ease, opacity 1s ease;
+    }
 
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
+    #back-btn.visible {
+      opacity: 1;
+    }
 
-@keyframes fadeOut {
-  to { opacity: 0; visibility: hidden; }
-}
-
-#back-btn {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  width: 50px;
-  cursor: pointer;
-  filter: drop-shadow(0 0 8px black);
-  transition: transform 0.3s ease;
-  opacity: 0;
-}
-
-#back-btn.visible {
-  opacity: 1;
-}
-
-#back-btn:hover {
-  transform: scale(1.1);
-}
-
+    #back-btn:hover {
+      transform: scale(1.1);
+    }
   </style>
 </head>
-<body>  <div class="loader-container" id="loader">
-    <img class="loader-icon" src="../heart.png" alt="rune">
-    <img class="loader-icon" src="../spiral.png" alt="rune">
-    <img class="loader-icon" src="../triangle.png" alt="rune">
-    <img class="loader-icon" src="../leaf.png" alt="rune">
-  </div>  <div class="line-pattern" id="grid"></div>  <a href="../index.html">
+<body>
+  <img id="rune1" class="rune" src="../spiral.png" alt="rune">
+  <img id="rune2" class="rune" src="../triangle.png" alt="rune">
+  <img id="rune3" class="rune" src="../heart.png" alt="rune">
+  <img id="rune4" class="rune" src="../leaf.png" alt="rune">
+
+  <a href="../index.html">
     <img id="back-btn" src="../leaf.png" alt="Back">
-  </a>  <script>
+  </a>
+
+  <script>
     window.addEventListener('load', () => {
       setTimeout(() => {
-        document.getElementById('grid').classList.add('visible');
+        document.querySelectorAll('.rune').forEach(el => el.classList.add('visible'));
         document.getElementById('back-btn').classList.add('visible');
-      }, 3000);
+      }, 2000);
     });
-  </script></body>
+  </script>
+</body>
 </html>
