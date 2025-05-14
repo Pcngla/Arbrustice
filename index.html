@@ -3,77 +3,51 @@
   <meta charset="UTF-8">
   <title>Arbrustice</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" href="favicon.ico">
   <style>
     html, body {
       margin: 0;
       padding: 0;
+      overflow: hidden;
       height: 100vh;
-      background-color: black;
-      background-image: url('background.jpg');
+      background: url('background.jpg') no-repeat center center fixed;
       background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      overflow-x: hidden;
-      overflow-y: hidden;
-    }.zone {
-  position: absolute;
-  width: 80px;
-  height: 80px;
-  cursor: pointer;
-  opacity: 0;
-  transition: opacity 0.5s ease;
-}
-
-#apple-zone {
-  top: 715px;
-  left: 895px;
-  width: 230px;
-  height: 230px;
-}
-
-#apple-animation {
-  position: absolute;
-  top: 715px;
-  left: 895px;
-  width: 230px;
-  height: 230px;
-  max-width: 100%;
-  height: auto;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-a:hover #apple-animation,
-a:active #apple-animation {
-  opacity: 1;
-}
-
-#heart-zone {
-  top: 42%;
-  left: 10%;
-  width: 80px;
-  height: 80px;
-  z-index: 3;
-}
-#triangle-zone { top: 32%; right: 12%; }
-#leaf-zone {
-  bottom: 7%;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
+    }
+    a {
+      position: absolute;
+      display: block;
+      width: 60px;
+      height: 60px;
+      transition: transform 0.3s ease;
+    }
+    a img {
+      width: 100%;
+      height: auto;
+      opacity: 0;
+    }
+    a:hover img {
+      opacity: 1;
+      transform: scale(1.2);
+    }
+    /* Invisible zones over the symbols in background.jpg */
+    #bonsai {
+      top: 25%; left: 30%; /* Heart */
+    }
+    #designs {
+      top: 25%; right: 30%; /* Triangle */
+    }
+    #apple {
+      bottom: 20%; left: 50%; transform: translateX(-50%); /* Obsidian heart apple */
+    }
+    #orchard {
+      bottom: 5%; left: 50%; transform: translateX(-50%); /* Leaf */
+    }
   </style>
 </head>
-<body>  <!-- Obsidian Apple Zone -->  <a href="apple.html">
-    <div id="apple-zone" class="zone"></div>
-    <img id="apple-animation" src="obsidian_apple_shake_FINAL.gif" alt="apple effect">
-  </a>  <!-- Bonsai Portal (Heart) -->  <a href="bonsai/index.html">
-    <div id="heart-zone" class="zone"></div>
-  </a>  <!-- Other portals -->  <a href="designs/index.html">
-    <div id="triangle-zone" class="zone"></div>
-  </a>  <a href="orchard/index.html">
-    <div id="leaf-zone" class="zone"></div>
-  </a></body>
+<body>
+  <a id="bonsai" href="bonsai/index.html"><img src="heart.png" alt="bonsai"></a>
+  <a id="designs" href="designs/index.html"><img src="triangle.png" alt="designs"></a>
+  <a id="apple" href="apple.html"><img src="spiral.png" alt="apple"></a>
+  <a id="orchard" href="orchard/index.html"><img src="leaf.png" alt="orchard"></a>
+</body>
 </html>
