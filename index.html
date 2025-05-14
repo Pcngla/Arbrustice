@@ -14,7 +14,8 @@
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-      overflow: hidden;
+      overflow-x: hidden;
+      overflow-y: hidden;
     }.zone {
   position: absolute;
   width: 80px;
@@ -37,6 +38,8 @@
   left: 895px;
   width: 230px;
   height: 230px;
+  max-width: 100%;
+  height: auto;
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.3s ease;
