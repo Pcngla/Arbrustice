@@ -1,39 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
   <title>Other Room</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body {
+    html, body {
       margin: 0;
       padding: 0;
-      background: #000;
-      color: goldenrod;
-      font-family: 'Segoe UI', sans-serif;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
       height: 100vh;
-      text-align: center;
-      animation: fadeIn 1s ease;
+      overflow: hidden;
+      background: black url('../background.jpg') no-repeat center center fixed;
+      background-size: cover;
+      animation: fadeIn 2s ease forwards;
+      opacity: 0;
     }
-    a {
-      margin-top: 20px;
-      color: crimson;
-      font-size: 1.2rem;
-      text-decoration: none;
-    }
+
     @keyframes fadeIn {
-      from { opacity: 0; }
       to { opacity: 1; }
+    }
+
+    .rune {
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      animation: float 3s ease-in-out infinite alternate;
+      filter: drop-shadow(0 0 10px crimson);
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+
+    .rune.visible {
+      opacity: 1;
+    }
+
+    #rune1 { top: 20%; left: 20%; }
+    #rune2 { top: 20%; right: 20%; }
+    #rune3 { bottom: 20%; left: 20%; }
+    #rune4 { bottom: 20%; right: 20%; }
+
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      100% { transform: translateY(-15px); }
+    }
+
+    #back-btn {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      width: 50px;
+      cursor: pointer;
+      filter: drop-shadow(0 0 10px crimson);
+      opacity: 0;
+      transition: transform 0.3s ease, opacity 1s ease;
+    }
+
+    #back-btn.visible {
+      opacity: 1;
+    }
+
+    #back-btn:hover {
+      transform: scale(1.1);
     }
   </style>
 </head>
 <body>
-  <h1>Welcome to the Other Room</h1>
-  <p>Reserved for surprises, tools, and hidden gems.</p>
-  <a href="../index.html">Return to Arbrustice</a>
+  <img id="rune1" class="rune" src="../heart.png" alt="rune">
+  <img id="rune2" class="rune" src="../spiral.png" alt="rune">
+  <img id="rune3" class="rune" src="../triangle.png" alt="rune">
+  <img id="rune4" class="rune" src="../leaf.png" alt="rune">
+
+  <a href="../index.html">
+    <img id="back-btn" src="../leaf.png" alt="Back">
+  </a>
+
+  <script>
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.querySelectorAll('.rune').forEach(el => el.classList.add('visible'));
+        document.getElementById('back-btn').classList.add('visible');
+      }, 2000);
+    });
+  </script>
 </body>
 </html>
