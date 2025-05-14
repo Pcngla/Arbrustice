@@ -1,7 +1,8 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Obsidian Apple Room</title>
+  <title>Apple Room</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     html, body {
@@ -9,70 +10,72 @@
       padding: 0;
       height: 100vh;
       overflow: hidden;
-      background: black;
-      background-image: url('apple_room_background.jpg');
+      background: black url('background.jpg') no-repeat center center fixed;
       background-size: cover;
-      background-position: center;
       animation: fadeIn 2s ease forwards;
       opacity: 0;
-    }@keyframes fadeIn {
-  to { opacity: 1; }
-}
+    }
 
-#apple-core {
-  position: absolute;
-  top: 45%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 120px;
-  animation: pulse 5s ease-in-out infinite;
-  filter: drop-shadow(0 0 12px crimson);
-}
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
 
-@keyframes pulse {
-  0% { transform: translate(-50%, -50%) scale(1); opacity: 0.9; }
-  50% { transform: translate(-50%, -50%) scale(1.05); opacity: 1; }
-  100% { transform: translate(-50%, -50%) scale(1); opacity: 0.9; }
-}
+    .apple-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 230px;
+      height: 230px;
+      animation: pulse 4s ease-in-out infinite;
+    }
 
-.rune {
-  position: absolute;
-  width: 50px;
-  animation: orbit 10s linear infinite;
-  filter: drop-shadow(0 0 8px red);
-}
+    @keyframes pulse {
+      0%, 100% { transform: translate(-50%, -50%) scale(1); }
+      50% { transform: translate(-50%, -50%) scale(1.05); }
+    }
 
-.rune:nth-child(2) { top: 20%; left: 50%; }
-.rune:nth-child(3) { top: 50%; left: 80%; }
-.rune:nth-child(4) { top: 80%; left: 50%; }
-.rune:nth-child(5) { top: 50%; left: 20%; }
+    .apple-container img {
+      width: 100%;
+      height: auto;
+      filter: drop-shadow(0 0 20px crimson);
+    }
 
-@keyframes orbit {
-  0% { transform: rotate(0deg) scale(1); }
-  50% { transform: rotate(180deg) scale(1.05); }
-  100% { transform: rotate(360deg) scale(1); }
-}
+    #back-btn {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      width: 50px;
+      cursor: pointer;
+      filter: drop-shadow(0 0 10px crimson);
+      opacity: 0;
+      transition: transform 0.3s ease, opacity 1s ease;
+    }
 
-#back-btn {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  width: 50px;
-  cursor: pointer;
-  filter: drop-shadow(0 0 10px crimson);
-  transition: transform 0.3s ease;
-}
+    #back-btn.visible {
+      opacity: 1;
+    }
 
-#back-btn:hover {
-  transform: scale(1.1);
-}
-
+    #back-btn:hover {
+      transform: scale(1.1);
+    }
   </style>
 </head>
-<body>  <img id="apple-core" src="spiral.png" alt="obsidian apple">  <img class="rune" src="heart.png" alt="rune">
-  <img class="rune" src="triangle.png" alt="rune">
-  <img class="rune" src="leaf.png" alt="rune">
-  <img class="rune" src="spiral.png" alt="rune">  <a href="index.html">
+<body>
+  <div class="apple-container">
+    <img src="obsidian_apple_shake_FINAL.gif" alt="Obsidian Apple">
+  </div>
+
+  <a href="index.html">
     <img id="back-btn" src="leaf.png" alt="Back">
-  </a></body>
+  </a>
+
+  <script>
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById('back-btn').classList.add('visible');
+      }, 2000);
+    });
+  </script>
+</body>
 </html>
