@@ -7,70 +7,87 @@
     html, body {
       margin: 0;
       padding: 0;
+      background-color: black;
       height: 100vh;
       overflow: hidden;
-      background: radial-gradient(ellipse at center, #000000 0%, #0b0b0b 100%);
-      font-family: 'Segoe UI', sans-serif;
-    }.neon-frame {
+      font-family: sans-serif;
+    }.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  width: 100vw;
+  height: 100vh;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 80vw;
-  height: 60vh;
-  border: 3px solid rgba(255, 0, 255, 0.7);
-  box-shadow: 0 0 20px magenta, 0 0 40px purple;
+}
+
+.cell {
+  border: 1px solid rgba(255, 255, 255, 0.1);
   display: flex;
   align-items: center;
   justify-content: center;
-  animation: pulse 2.5s infinite ease-in-out;
-  backdrop-filter: blur(3px);
+  transition: background 0.3s ease;
 }
 
-@keyframes pulse {
-  0%, 100% { transform: translate(-50%, -50%) scale(1); }
-  50% { transform: translate(-50%, -50%) scale(1.05); }
-}
-
-h1 {
-  color: white;
-  font-size: 3em;
-  text-shadow: 0 0 10px fuchsia, 0 0 20px magenta;
-  animation: glow 3s ease-in-out infinite alternate;
-}
-
-@keyframes glow {
-  from { text-shadow: 0 0 10px magenta; }
-  to { text-shadow: 0 0 20px violet, 0 0 30px magenta; }
-}
-
-a.back {
-  position: absolute;
-  bottom: 30px;
-  left: 30px;
-  color: gold;
-  font-weight: bold;
-  text-decoration: none;
-  font-size: 1.2em;
+.cell:hover {
   background: rgba(255, 255, 255, 0.05);
-  padding: 10px 20px;
-  border: 1px solid gold;
-  border-radius: 8px;
-  transition: background 0.3s, transform 0.3s;
 }
 
-a.back:hover {
-  background: gold;
-  color: black;
+.cell img {
+  width: 50px;
+  height: 50px;
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+.cell:nth-child(1):hover img {
+  transform: scale(1.2) rotate(5deg);
+  filter: drop-shadow(0 0 5px red);
+}
+.cell:nth-child(2):hover img {
+  transform: scale(1.4) rotate(-5deg);
+  filter: hue-rotate(90deg);
+}
+.cell:nth-child(3):hover img {
   transform: scale(1.1);
+  filter: brightness(150%);
+}
+.cell:nth-child(4):hover img {
+  transform: translateY(-10px);
+  filter: sepia(80%);
+}
+.cell:nth-child(5):hover img {
+  transform: scale(1.3) rotate(360deg);
+  filter: drop-shadow(0 0 8px cyan);
+}
+.cell:nth-child(6):hover img {
+  transform: scale(1.1) rotate(15deg);
+  filter: contrast(200%);
+}
+.cell:nth-child(7):hover img {
+  transform: translateX(10px);
+  filter: grayscale(100%);
+}
+.cell:nth-child(8):hover img {
+  transform: scale(1.2) rotate(-15deg);
+  filter: invert(1);
+}
+.cell:nth-child(9):hover img {
+  transform: scale(1.5);
+  filter: saturate(3);
 }
 
   </style>
 </head>
 <body>
-  <div class="neon-frame">
-    <h1>Designs Portal</h1>
+  <div class="grid">
+    <div class="cell"><img src="../heart.png" alt="icon" /></div>
+    <div class="cell"><img src="../spiral.png" alt="icon" /></div>
+    <div class="cell"><img src="../triangle.png" alt="icon" /></div>
+    <div class="cell"><img src="../leaf.png" alt="icon" /></div>
+    <div class="cell"><img src="../heart.png" alt="icon" /></div>
+    <div class="cell"><img src="../spiral.png" alt="icon" /></div>
+    <div class="cell"><img src="../triangle.png" alt="icon" /></div>
+    <div class="cell"><img src="../leaf.png" alt="icon" /></div>
+    <div class="cell"><img src="../heart.png" alt="icon" /></div>
   </div>
-  <a class="back" href="../index.html">Return to Bonsai</a>
 </body>
 </html>
